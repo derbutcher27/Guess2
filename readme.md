@@ -1,6 +1,6 @@
 Sören ToDO
 
-https://github.com/derbutcher27/Guess2/pull/1
+https://stackoverflow.com/questions/43134044/how-to-create-simple-sqlite-database-in-android-with-cursor-adaptor
 
 
 
