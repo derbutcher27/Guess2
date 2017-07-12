@@ -27,8 +27,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.DoubleStream;
-import java.util.stream.IntStream;
+
 
 import static android.R.attr.value;
 import static android.R.id.input;
@@ -56,10 +55,37 @@ public class MainActivity extends AppCompatActivity {
         FragenUAntworten fragenUAntworten = new FragenUAntworten();
 
         //Neue Frage hinzufügen
+        fragenUAntworten.setId(1);
+        fragenUAntworten.setFragen("Wie hoch ist die ISS (in KM) ?");
+        fragenUAntworten.setAntworten("400");
+        db.addBook(fragenUAntworten);
+
+        //Neue Frage hinzufügen
+        fragenUAntworten.setId(2);
+        fragenUAntworten.setFragen("Wie hoch ist die ISS (in KM) ?");
+        fragenUAntworten.setAntworten("400");
+        db.addBook(fragenUAntworten);
+        //Neue Frage hinzufügen
+        fragenUAntworten.setId(3);
+        fragenUAntworten.setFragen("Wie hoch ist die ISS (in KM) ?");
+        fragenUAntworten.setAntworten("400");
+        db.addBook(fragenUAntworten);
+        //Neue Frage hinzufügen
+        fragenUAntworten.setId(4);
+        fragenUAntworten.setFragen("Wie hoch ist die ISS (in KM) ?");
+        fragenUAntworten.setAntworten("400");
+        db.addBook(fragenUAntworten);
+        //Neue Frage hinzufügen
+        fragenUAntworten.setId(5);
+        fragenUAntworten.setFragen("Wie hoch ist die ISS (in KM) ?");
+        fragenUAntworten.setAntworten("400");
+        db.addBook(fragenUAntworten);
+        //Neue Frage hinzufügen
         fragenUAntworten.setId(6);
         fragenUAntworten.setFragen("Wie hoch ist die ISS (in KM) ?");
         fragenUAntworten.setAntworten("400");
         db.addBook(fragenUAntworten);
+
 
         Random rand = new Random();
         int n = rand.nextInt(5);
@@ -170,8 +196,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
 
-                } else {
-                    
                 }
             }
 
