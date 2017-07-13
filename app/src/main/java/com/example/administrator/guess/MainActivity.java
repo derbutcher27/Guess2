@@ -32,9 +32,9 @@ import java.util.Random;
 import static android.R.attr.value;
 import static android.R.id.input;
 import static android.R.id.list;
-import static com.example.administrator.guess.R.id.antwort;
-import static com.example.administrator.guess.R.id.eingabe;
-import static com.example.administrator.guess.R.id.tv1;
+import static com.example.administrator.guess.R.id.EditTextEingabeAntwort;
+import static com.example.administrator.guess.R.id.TextViewAntwortUser;
+import static com.example.administrator.guess.R.id.TextViewFrageDB;
 import static com.example.administrator.guess.R.id.yourLife;
 import static java.lang.Long.parseLong;
 
@@ -67,119 +67,164 @@ public class MainActivity extends AppCompatActivity {
         final int ant = n;
         int fr = n;
 
-        final long zahl1;
         final long zahl2 = parseLong(db.fragenUAntwortenArrayList().get(ant).getAntworten());
 
-        TextView tv1 = (TextView) findViewById(R.id.tv1);
-        tv1.setText(db.fragenUAntwortenArrayList().get(fr).getFragen());
+        TextView TextViewFrageDB = (TextView) findViewById(R.id.TextViewFrageDB);
+        TextViewFrageDB.setText(db.fragenUAntwortenArrayList().get(fr).getFragen());
 
-        final TextView tv2 = (TextView) findViewById(R.id.tv2);
-        tv2.setText("");
+        final TextView TextViewAntwortDB = (TextView) findViewById(R.id.TextViewAntwortDB);
+        TextViewAntwortDB.setText("");
 
-        final TextView diff = (TextView) findViewById(R.id.diff);
-        final TextView eingabe = (TextView) findViewById(R.id.eingabe);
-        final EditText antwort = (EditText) findViewById(R.id.antwort);
+        final TextView TextViewDifferenz = (TextView) findViewById(R.id.TextViewDifferenz);
+        final TextView TextViewAntwortUser = (TextView) findViewById(R.id.TextViewAntwortUser);
+        final EditText EditTextEingabeAntwort = (EditText) findViewById(R.id.EditTextEingabeAntwort);
         final TextView yourLife = (TextView) findViewById(R.id.yourLife);
 
+        final Button buttonNaechsteFrage = (Button) findViewById(R.id.buttonNaechsteFrage);
+        buttonNaechsteFrage.setVisibility(View.INVISIBLE);
 
-        final Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+        final Button buttonNewGame = (Button) findViewById(R.id.buttonNewGame);
+        buttonNewGame.setVisibility(View.INVISIBLE);
+
+        final Button buttonLoesen = (Button) findViewById(R.id.buttonLoesen);
+        buttonLoesen.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                tv2.setText(db.fragenUAntwortenArrayList().get(ant).getAntworten());
+                TextViewAntwortDB.setText(db.fragenUAntwortenArrayList().get(ant).getAntworten());
 
-                if (!TextUtils.isEmpty(antwort.getText().toString().trim())) {
+                if (!TextUtils.isEmpty(EditTextEingabeAntwort.getText().toString().trim())) {
 
-                    eingabe.setText(antwort.getText().toString());
+                    TextViewAntwortUser.setText(EditTextEingabeAntwort.getText().toString());
 
-                    long zahl1 = parseLong(antwort.getText().toString());
+                    long zahl1 = parseLong(EditTextEingabeAntwort.getText().toString());
                     double prozRechnung = Math.abs(100 - zahl1 * 100 / zahl2);
                     Ergebnis = 100 - prozRechnung;
-                    double leben = 100 - prozRechnung;
 
                     if (prozRechnung >= 100) {
-                        diff.setText("Du hast verloren! Du lagst mehr als: " + prozRechnung + "% daneben!");
+                        TextViewDifferenz.setText("Du hast verloren! Du lagst " + prozRechnung + "% daneben!");
                         yourLife.setText("0");
+                        buttonLoesen.setVisibility(View.INVISIBLE);
+                        buttonNewGame.setVisibility(View.VISIBLE);
+
+                        final Intent returnToStart = new Intent(MainActivity.this, Start.class);
+                        buttonNewGame.setOnClickListener(new View.OnClickListener() {
+                            public void onClick(View v) {
+
+                                startActivity(returnToStart);
+
+                            }
+                        });
+
+
                     } else {
-                        diff.setText("Du lagst: " + prozRechnung + "% daneben!");
-                        yourLife.setText(""+Ergebnis);
-                    }
-                } else {
-                    antwort.setError("Darf nicht leer sein");
-                }
-            }
+                        TextViewDifferenz.setText("Du lagst: " + prozRechnung + "% daneben!");
+                        yourLife.setText("" + Ergebnis);
 
-        });
+                        buttonNaechsteFrage.setVisibility(View.VISIBLE);
+                        buttonNaechsteFrage.setOnClickListener(new View.OnClickListener() {
+                            public void onClick(View v) {
+
+                                if (!TextUtils.isEmpty(TextViewDifferenz.getText().toString().trim())) {
+
+                                    Random rand2 = new Random();
+                                    int n = rand2.nextInt(5);
+
+                                    final int ant2 = n;
+                                    int fr2 = n;
+
+                                    TextView tv3 = (TextView) findViewById(R.id.TextViewFrageDB);
+                                    tv3.setText(db.fragenUAntwortenArrayList().get(fr2).getFragen());
+
+                                    final TextView tv4 = (TextView) findViewById(R.id.TextViewAntwortDB);
+                                    tv4.setText("");
+
+                                    final TextView diff2 = (TextView) findViewById(R.id.TextViewDifferenz);
+                                    final TextView eingabe2 = (TextView) findViewById(R.id.TextViewAntwortUser);
+                                    final EditText antwort2 = (EditText) findViewById(R.id.EditTextEingabeAntwort);
+                                    final TextView yourLife = (TextView) findViewById(R.id.yourLife);
+
+                                    eingabe2.setText("");
+                                    diff2.setText("");
+                                    antwort2.setText("");
+
+                                    final long zahl3;
+                                    final long zahl4 = parseLong(db.fragenUAntwortenArrayList().get(ant2).getAntworten());
+                                    buttonNaechsteFrage.setVisibility(View.INVISIBLE);
+
+                                    final Button buttonLoesen = (Button) findViewById(R.id.buttonLoesen);
+                                    buttonLoesen.setOnClickListener(new View.OnClickListener() {
+                                        public void onClick(View v) {
+
+                                            tv4.setText(db.fragenUAntwortenArrayList().get(ant2).getAntworten());
+
+                                            if (!TextUtils.isEmpty(antwort2.getText().toString().trim())) {
+
+                                                eingabe2.setText(antwort2.getText().toString());
+
+                                                long zahl3 = parseLong(antwort2.getText().toString());
+                                                double prozRechnung = Math.abs(100 - zahl3 * 100 / zahl4);
+                                                Ergebnis = Ergebnis - prozRechnung;
+
+                                                if (prozRechnung >= 100) {
+                                                    diff2.setText("Du hast verloren! Du lagst " + prozRechnung + "% daneben!");
+                                                    yourLife.setText("0");
+                                                    buttonLoesen.setVisibility(View.INVISIBLE);
+                                                    buttonNaechsteFrage.setVisibility(View.INVISIBLE);
+                                                    buttonNewGame.setVisibility(View.VISIBLE);
+
+                                                    final Intent returnToStart = new Intent(MainActivity.this, Start.class);
+                                                    buttonNewGame.setOnClickListener(new View.OnClickListener() {
+                                                        public void onClick(View v) {
+
+                                                            startActivity(returnToStart);
+
+                                                        }
+                                                    });
 
 
-        final Button button2 = (Button) findViewById(R.id.button2);
-        button2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                                                } else if (Ergebnis <= 0) {
+                                                    diff2.setText("Du hast verloren! Du lagst " + prozRechnung + "% daneben!");
+                                                    yourLife.setText("0");
+                                                    buttonLoesen.setVisibility(View.INVISIBLE);
+                                                    buttonNaechsteFrage.setVisibility(View.INVISIBLE);
+                                                    buttonNewGame.setVisibility(View.VISIBLE);
 
-                if (!TextUtils.isEmpty(diff.getText().toString().trim())) {
+                                                    final Intent returnToStart = new Intent(MainActivity.this, Start.class);
+                                                    buttonNewGame.setOnClickListener(new View.OnClickListener() {
+                                                        public void onClick(View v) {
 
-                    Random rand2 = new Random();
-                    int n = rand2.nextInt(5);
+                                                            startActivity(returnToStart);
 
-                    final int ant2 = n;
-                    int fr2 = n;
+                                                        }
+                                                    });
 
-                    TextView tv3 = (TextView) findViewById(R.id.tv1);
-                    tv3.setText(db.fragenUAntwortenArrayList().get(fr2).getFragen());
 
-                    final TextView tv4 = (TextView) findViewById(R.id.tv2);
-                    tv4.setText("");
+                                                } else {
+                                                    diff2.setText("Du lagst " + prozRechnung + "% daneben!");
+                                                    yourLife.setText("" + Ergebnis);
+                                                    buttonNaechsteFrage.setVisibility(View.VISIBLE);
 
-                    final TextView diff2 = (TextView) findViewById(R.id.diff);
-                    final TextView eingabe2 = (TextView) findViewById(R.id.eingabe);
-                    final EditText antwort2 = (EditText) findViewById(R.id.antwort);
-                    final TextView yourLife = (TextView) findViewById(R.id.yourLife);
+                                                }
 
-                    eingabe2.setText("");
-                    diff2.setText("");
-                    antwort2.setText("");
+                                            } else {
+                                                antwort2.setError("Darf nicht leer sein");
+                                            }
 
-                    final long zahl3;
-                    final long zahl4 = parseLong(db.fragenUAntwortenArrayList().get(ant2).getAntworten());
+                                        }
+                                    });
 
-                    final Button button = (Button) findViewById(R.id.button);
-                    button.setOnClickListener(new View.OnClickListener() {
-                        public void onClick(View v) {
-
-                            tv4.setText(db.fragenUAntwortenArrayList().get(ant2).getAntworten());
-
-                            if (!TextUtils.isEmpty(antwort2.getText().toString().trim())) {
-
-                                eingabe2.setText(antwort2.getText().toString());
-
-                                long zahl3 = parseLong(antwort2.getText().toString());
-                                double prozRechnung = Math.abs(100 - zahl3 * 100 / zahl4);
-                                Ergebnis = Ergebnis - prozRechnung;
-
-                                if (prozRechnung >= 100) {
-                                    diff2.setText("Du hast verloren! Du lagst: " + prozRechnung + "% daneben!");
-                                    yourLife.setText("0");
-
-                                } else if (Ergebnis <= 0){
-                                    diff2.setText("Du hast verloren! Du lagst: " + prozRechnung + "% daneben!");
-                                    yourLife.setText("0");
                                 }
-
-                                else {
-                                    diff2.setText("Du lagst: " + prozRechnung + "% daneben!");
-                                    yourLife.setText(""+Ergebnis);
-
-                                }
-                            } else {
-                                antwort2.setError("Darf nicht leer sein");
                             }
 
-                        }
-                    });
 
+                        });
+
+
+                    }
+                } else {
+                    EditTextEingabeAntwort.setError("Darf nicht leer sein");
                 }
             }
-
 
         });
 

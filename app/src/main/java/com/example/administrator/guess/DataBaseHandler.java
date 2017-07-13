@@ -15,7 +15,7 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
-import static com.example.administrator.guess.R.id.tv1;
+import static com.example.administrator.guess.R.id.TextViewFrageDB;
 import static java.security.AccessController.getContext;
 
 

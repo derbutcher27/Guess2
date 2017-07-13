@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="#e4e4e4"
@@ -8,7 +8,7 @@
     tools:context="com.example.administrator.guess.MainActivity">
 
     <TextView
-        android:id="@+id/tv1"
+        android:id="@+id/TextViewFrageDB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Frage"
@@ -23,19 +23,19 @@
         android:layout_alignParentStart="true" />
 
     <TextView
-        android:id="@+id/tv2"
+        android:id="@+id/TextViewAntwortDB"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Antwort"
         android:gravity="center"
         android:textColor="@color/colorAccent"
         android:layout_marginTop="80dp"
-        android:layout_below="@+id/tv1"
+        android:layout_below="@+id/TextViewFrageDB"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
     <EditText
-        android:id="@+id/antwort"
+        android:id="@+id/EditTextEingabeAntwort"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -43,36 +43,36 @@
         android:textColor="@color/colorAccent"
         android:gravity="center"
         android:layout_marginBottom="75dp"
-        android:layout_above="@+id/button2"
+        android:layout_above="@+id/buttonNaechsteFrage"
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:id="@+id/eingabe"
+        android:id="@+id/TextViewAntwortUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:gravity="center"
         android:textColor="@color/colorAccent"
         android:text=""
-        android:layout_below="@+id/tv2"
+        android:layout_below="@+id/TextViewAntwortDB"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_toRightOf="@+id/textView"
-        android:layout_toEndOf="@+id/textView" />
+        android:layout_toRightOf="@+id/TextViewUserAntwort"
+        android:layout_toEndOf="@+id/TextViewUserAntwort" />
 
     <TextView
-        android:id="@+id/diff"
+        android:id="@+id/TextViewDifferenz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity=""
         android:text=""
         android:textColor="@color/colorPrimaryDark"
         android:layout_marginTop="24dp"
-        android:layout_below="@+id/eingabe"
+        android:layout_below="@+id/TextViewAntwortUser"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView" />
+        android:layout_alignLeft="@+id/TextViewUserAntwort"
+        android:layout_alignStart="@+id/TextViewUserAntwort" />
 
     <TextView
         android:id="@+id/yourLife"
@@ -84,21 +84,21 @@
         android:text="100" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonLoesen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Lösen"
         android:textColor="#ffffff"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:background="@color/colorPrimaryDark"
-        android:layout_above="@+id/button2"
+        android:layout_above="@+id/buttonNaechsteFrage"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonNaechsteFrage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nächste Frage"
@@ -112,27 +112,42 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
+    <Button
+        android:id="@+id/buttonNewGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Neues Spiel"
+        android:textColor="#ffffff"
+        android:background="@color/colorPrimaryDark"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_above="@+id/yourLife"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="29dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/TextViewRichtigeAntwort"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/eingabe"
+        android:layout_above="@+id/TextViewAntwortUser"
         android:layout_marginLeft="20dp"
-        android:layout_toLeftOf="@+id/tv2"
+        android:layout_toLeftOf="@+id/TextViewAntwortDB"
         android:text="Richtige Antwort:"
         android:textColor="@color/colorPrimaryDark" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/TextViewUserAntwort"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:text="Deine Antwort:"
         android:textColor="@color/colorPrimaryDark"
-        android:layout_alignBaseline="@+id/eingabe"
-        android:layout_alignBottom="@+id/eingabe"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2"
-        android:layout_toLeftOf="@+id/tv2"
-        android:layout_toStartOf="@+id/tv2" />
+        android:layout_alignBaseline="@+id/TextViewAntwortUser"
+        android:layout_alignBottom="@+id/TextViewAntwortUser"
+        android:layout_alignLeft="@+id/TextViewRichtigeAntwort"
+        android:layout_alignStart="@+id/TextViewRichtigeAntwort"
+        android:layout_toLeftOf="@+id/TextViewAntwortDB"
+        android:layout_toStartOf="@+id/TextViewAntwortDB" />
 
 </RelativeLayout>
