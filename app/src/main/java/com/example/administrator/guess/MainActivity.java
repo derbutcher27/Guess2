@@ -43,6 +43,7 @@ import static java.lang.Long.parseLong;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "LOG";
+    private static double Ergebnis = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,37 +56,10 @@ public class MainActivity extends AppCompatActivity {
         FragenUAntworten fragenUAntworten = new FragenUAntworten();
 
         //Neue Frage hinzufügen
-        fragenUAntworten.setId(1);
-        fragenUAntworten.setFragen("Wie hoch ist die ISS (in KM) ?");
-        fragenUAntworten.setAntworten("400");
-        db.addBook(fragenUAntworten);
-
-        //Neue Frage hinzufügen
-        fragenUAntworten.setId(2);
-        fragenUAntworten.setFragen("Wie hoch ist die ISS (in KM) ?");
-        fragenUAntworten.setAntworten("400");
-        db.addBook(fragenUAntworten);
-        //Neue Frage hinzufügen
-        fragenUAntworten.setId(3);
-        fragenUAntworten.setFragen("Wie hoch ist die ISS (in KM) ?");
-        fragenUAntworten.setAntworten("400");
-        db.addBook(fragenUAntworten);
-        //Neue Frage hinzufügen
-        fragenUAntworten.setId(4);
-        fragenUAntworten.setFragen("Wie hoch ist die ISS (in KM) ?");
-        fragenUAntworten.setAntworten("400");
-        db.addBook(fragenUAntworten);
-        //Neue Frage hinzufügen
-        fragenUAntworten.setId(5);
-        fragenUAntworten.setFragen("Wie hoch ist die ISS (in KM) ?");
-        fragenUAntworten.setAntworten("400");
-        db.addBook(fragenUAntworten);
-        //Neue Frage hinzufügen
-        fragenUAntworten.setId(6);
-        fragenUAntworten.setFragen("Wie hoch ist die ISS (in KM) ?");
-        fragenUAntworten.setAntworten("400");
-        db.addBook(fragenUAntworten);
-
+        //fragenUAntworten.setId(1);
+        //fragenUAntworten.setFragen("Wie hoch ist die ISS (in KM) ?");
+        //fragenUAntworten.setAntworten("400");
+        //db.addBook(fragenUAntworten);
 
         Random rand = new Random();
         int n = rand.nextInt(5);
@@ -120,14 +94,15 @@ public class MainActivity extends AppCompatActivity {
 
                     long zahl1 = parseLong(antwort.getText().toString());
                     double prozRechnung = Math.abs(100 - zahl1 * 100 / zahl2);
+                    Ergebnis = 100 - prozRechnung;
                     double leben = 100 - prozRechnung;
 
                     if (prozRechnung >= 100) {
-                        diff.setText("Du hast verloren! Du lagst: " + prozRechnung + "% daneben!");
+                        diff.setText("Du hast verloren! Du lagst mehr als: " + prozRechnung + "% daneben!");
                         yourLife.setText("0");
                     } else {
                         diff.setText("Du lagst: " + prozRechnung + "% daneben!");
-                        yourLife.setText("");
+                        yourLife.setText(""+Ergebnis);
                     }
                 } else {
                     antwort.setError("Darf nicht leer sein");
@@ -158,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                     final TextView diff2 = (TextView) findViewById(R.id.diff);
                     final TextView eingabe2 = (TextView) findViewById(R.id.eingabe);
                     final EditText antwort2 = (EditText) findViewById(R.id.antwort);
-                    final TextView yourLife2 = (TextView) findViewById(R.id.yourLife);
+                    final TextView yourLife = (TextView) findViewById(R.id.yourLife);
 
                     eingabe2.setText("");
                     diff2.setText("");
@@ -179,14 +154,20 @@ public class MainActivity extends AppCompatActivity {
 
                                 long zahl3 = parseLong(antwort2.getText().toString());
                                 double prozRechnung = Math.abs(100 - zahl3 * 100 / zahl4);
+                                Ergebnis = Ergebnis - prozRechnung;
 
                                 if (prozRechnung >= 100) {
                                     diff2.setText("Du hast verloren! Du lagst: " + prozRechnung + "% daneben!");
-                                    yourLife2.setText("0");
-                                } else {
-                                    diff2.setText("Du lagst: " + prozRechnung + "% daneben!");
-                                    yourLife2.setText("");
+                                    yourLife.setText("0");
 
+                                } else if (Ergebnis <= 0){
+                                    diff2.setText("Du hast verloren! Du lagst: " + prozRechnung + "% daneben!");
+                                    yourLife.setText("0");
+                                }
+
+                                else {
+                                    diff2.setText("Du lagst: " + prozRechnung + "% daneben!");
+                                    yourLife.setText(""+Ergebnis);
 
                                 }
                             } else {
