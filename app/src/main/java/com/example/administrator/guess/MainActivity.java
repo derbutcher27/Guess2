@@ -55,11 +55,21 @@ public class MainActivity extends AppCompatActivity {
         final DataBaseHandler db = new DataBaseHandler(getApplicationContext(), "FragenUAntworten", 1);
         FragenUAntworten fragenUAntworten = new FragenUAntworten();
 
-        //Neue Frage hinzufügen
-        //fragenUAntworten.setId(1);
-        //fragenUAntworten.setFragen("Wie hoch ist die ISS (in KM) ?");
-        //fragenUAntworten.setAntworten("400");
-        //db.addBook(fragenUAntworten);
+
+        if (db.fragenUAntwortenArrayList().get(0).getId() == 1){
+            Log.d("DB", "DB vorhanden");
+        }else {
+            Log.d("DB", "DB wird angelegt");
+            //Neue Frage hinzufügen
+            fragenUAntworten.setId(1);
+            fragenUAntworten.setFragen("Wie hoch ist die ISS (in KM) ?");
+            fragenUAntworten.setAntworten("400");
+            db.addBook(fragenUAntworten);
+        }
+
+
+
+
 
         Random rand = new Random();
         int n = rand.nextInt(5);
