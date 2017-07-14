@@ -4,6 +4,7 @@ public class FragenUAntworten {
     private int id;
     private String fragen;
     private String antworten;
+    private String kapitel;
 
     public void setId(int id) {
         this.id = id;
@@ -17,6 +18,10 @@ public class FragenUAntworten {
         this.antworten = antworten;
     }
 
+    public void setKapitel(String kapitel) {
+        this.kapitel = kapitel;
+    }
+
     public int getId() {
         return id;
     }
@@ -27,6 +32,10 @@ public class FragenUAntworten {
 
     public String getAntworten() {
         return antworten;
+    }
+
+    public String getKapitel() {
+        return kapitel;
     }
 
 }

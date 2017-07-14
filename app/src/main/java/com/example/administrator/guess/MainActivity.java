@@ -55,12 +55,6 @@ public class MainActivity extends AppCompatActivity {
         final DataBaseHandler db = new DataBaseHandler(getApplicationContext(), "FragenUAntworten", 1);
         FragenUAntworten fragenUAntworten = new FragenUAntworten();
 
-        //Neue Frage hinzufügen
-        //fragenUAntworten.setId(1);
-        //fragenUAntworten.setFragen("Wie hoch ist die ISS (in KM) ?");
-        //fragenUAntworten.setAntworten("400");
-        //db.addBook(fragenUAntworten);
-
         Random rand = new Random();
         int n = rand.nextInt(5);
 
@@ -126,8 +120,8 @@ public class MainActivity extends AppCompatActivity {
 
                                 if (!TextUtils.isEmpty(TextViewDifferenz.getText().toString().trim())) {
 
-                                    Random rand2 = new Random();
-                                    int n = rand2.nextInt(5);
+                                    Random rand = new Random();
+                                    int n = rand.nextInt(5);
 
                                     final int ant2 = n;
                                     int fr2 = n;

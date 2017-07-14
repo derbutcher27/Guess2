@@ -22,9 +22,10 @@ import static java.security.AccessController.getContext;
 public class DataBaseHandler extends SQLiteOpenHelper {
 
     public String FragenUAntwortenTable = "FragenUAntworten";
-    public String Book_Id = "id";
+    public String FuA_Id = "id";
     public String Fragen = "Fragen";
     public String Antworten = "Antworten";
+    public String Kapitel = "Kapitel";
 
     private final int DB_Version = 1;
 
@@ -34,7 +35,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("Create Table " + FragenUAntwortenTable + "(" + Book_Id + " INTEGER PRIMARY KEY, " + Fragen + " Text, " + Antworten + " Text);");
+        db.execSQL("Create Table " + FragenUAntwortenTable + "(" + FuA_Id + " INTEGER PRIMARY KEY, " + Fragen + " Text, " + Antworten + " Text, " + Kapitel + " Text);");
     }
 
     @Override
@@ -42,14 +43,15 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
     }
 
-    public void addBook(FragenUAntworten fragenUAntworten) {
+    public void addFrageUndAntwort(FragenUAntworten fragenUAntworten) {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-        cv.put(Book_Id, fragenUAntworten.getId());
-        cv.put(Fragen, fragenUAntworten.getFragen());
-        cv.put(Antworten, fragenUAntworten.getAntworten());
+        ContentValues values = new ContentValues();
+        values.put(FuA_Id, fragenUAntworten.getId());
+        values.put(Fragen, fragenUAntworten.getFragen());
+        values.put(Antworten, fragenUAntworten.getAntworten());
+        values.put(Kapitel, fragenUAntworten.getKapitel());
 
-        db.insert(FragenUAntwortenTable, null, cv);
+        db.insert(FragenUAntwortenTable, null, values);
         db.close();
     }
 
@@ -66,6 +68,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
             fragenUAntworten.setId(c.getInt(0));
             fragenUAntworten.setFragen(c.getString(1));
             fragenUAntworten.setAntworten(c.getString(2));
+            fragenUAntworten.setKapitel(c.getString(3));
             FuAList.add(fragenUAntworten);
             c.moveToNext();
 
