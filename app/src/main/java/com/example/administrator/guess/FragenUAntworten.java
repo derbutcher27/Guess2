@@ -1,41 +1,48 @@
 package com.example.administrator.guess;
 
 public class FragenUAntworten {
-    private int id;
-    private String fragen;
-    private String antworten;
-    private String kapitel;
 
-    public void setId(int id) {
+    //private variables
+    int id;
+    String frage;
+    String antwort;
+
+    // Empty constructor
+    public FragenUAntworten(){
+
+    }
+    // constructor
+    public FragenUAntworten(String frage, String antwort){
+        this.frage = frage;
+        this.antwort = antwort;
+    }
+    // getting ID
+    public int getID(){
+        return this.id;
+    }
+
+    // setting ID
+    public void setID(int id){
         this.id = id;
     }
 
-    public void setFragen(String fragen) {
-        this.fragen = fragen;
+    // getting frage
+    public String getFrage(){
+        return this.frage;
     }
 
-    public void setAntworten(String antworten) {
-        this.antworten = antworten;
+    // setting frage
+    public void setFrage(String frage){
+        this.frage = frage;
     }
 
-    public void setKapitel(String kapitel) {
-        this.kapitel = kapitel;
+    // getting antwort
+    public String getAntwort(){
+        return this.antwort;
     }
 
-    public int getId() {
-        return id;
+    // setting antwort
+    public void setAntwort(String anwort){
+        this.antwort = anwort;
     }
-
-    public String getFragen() {
-        return fragen;
-    }
-
-    public String getAntworten() {
-        return antworten;
-    }
-
-    public String getKapitel() {
-        return kapitel;
-    }
-
 }

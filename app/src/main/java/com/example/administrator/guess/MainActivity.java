@@ -1,49 +1,26 @@
 package com.example.administrator.guess;
 
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.nfc.Tag;
-import android.os.Build;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Random;
 
 
-import static android.R.attr.value;
-import static android.R.id.input;
-import static android.R.id.list;
-import static com.example.administrator.guess.R.id.EditTextEingabeAntwort;
-import static com.example.administrator.guess.R.id.TextViewAntwortUser;
-import static com.example.administrator.guess.R.id.TextViewFrageDB;
-import static com.example.administrator.guess.R.id.yourLife;
 import static java.lang.Long.parseLong;
 
 //import static com.example.administrator.guess.DataBaseHandler.ArrayValue;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "LOG";
-    private static double Ergebnis = 0;
+    private  final String TAG = "LOG";
+    private  double Ergebnis = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,19 +29,25 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide(); //<< this
         setContentView(R.layout.activity_main);
 
-        final DataBaseHandler db = new DataBaseHandler(getApplicationContext(), "FragenUAntworten", 1);
-        FragenUAntworten fragenUAntworten = new FragenUAntworten();
+       // final DataBaseHandler db = new DataBaseHandler(getApplicationContext(), "FragenUAntworten", 1);
+       final DataBaseHandler db = new DataBaseHandler(this);
+
+        FragenUAntworten FragenUAntworten = new FragenUAntworten();
+
+
+
 
         Random rand = new Random();
-        int n = rand.nextInt(5);
+        int n = rand.nextInt(db.getSize());
 
         final int ant = n;
         int fr = n;
 
-        final long zahl2 = parseLong(db.fragenUAntwortenArrayList().get(ant).getAntworten());
+
+        final long zahl2 = parseLong(db.getAllFragen().get(ant).getAntwort());
 
         TextView TextViewFrageDB = (TextView) findViewById(R.id.TextViewFrageDB);
-        TextViewFrageDB.setText(db.fragenUAntwortenArrayList().get(fr).getFragen());
+        TextViewFrageDB.setText(db.getAllFragen().get(fr).getFrage());
 
         final TextView TextViewAntwortDB = (TextView) findViewById(R.id.TextViewAntwortDB);
         TextViewAntwortDB.setText("");
@@ -84,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         buttonLoesen.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                TextViewAntwortDB.setText(db.fragenUAntwortenArrayList().get(ant).getAntworten());
+                TextViewAntwortDB.setText(db.getAllFragen().get(ant).getAntwort());
 
                 if (!TextUtils.isEmpty(EditTextEingabeAntwort.getText().toString().trim())) {
 
@@ -120,14 +103,14 @@ public class MainActivity extends AppCompatActivity {
 
                                 if (!TextUtils.isEmpty(TextViewDifferenz.getText().toString().trim())) {
 
-                                    Random rand = new Random();
-                                    int n = rand.nextInt(5);
+                                    Random rand2 = new Random();
+                                    int n = rand2.nextInt(5);
 
                                     final int ant2 = n;
                                     int fr2 = n;
 
                                     TextView tv3 = (TextView) findViewById(R.id.TextViewFrageDB);
-                                    tv3.setText(db.fragenUAntwortenArrayList().get(fr2).getFragen());
+                                    tv3.setText(db.getAllFragen().get(fr2).getFrage());
 
                                     final TextView tv4 = (TextView) findViewById(R.id.TextViewAntwortDB);
                                     tv4.setText("");
@@ -142,14 +125,14 @@ public class MainActivity extends AppCompatActivity {
                                     antwort2.setText("");
 
                                     final long zahl3;
-                                    final long zahl4 = parseLong(db.fragenUAntwortenArrayList().get(ant2).getAntworten());
+                                    final long zahl4 = parseLong(db.getAllFragen().get(ant2).getAntwort());
                                     buttonNaechsteFrage.setVisibility(View.INVISIBLE);
 
                                     final Button buttonLoesen = (Button) findViewById(R.id.buttonLoesen);
                                     buttonLoesen.setOnClickListener(new View.OnClickListener() {
                                         public void onClick(View v) {
 
-                                            tv4.setText(db.fragenUAntwortenArrayList().get(ant2).getAntworten());
+                                            tv4.setText(db.getAllFragen().get(ant2).getAntwort());
 
                                             if (!TextUtils.isEmpty(antwort2.getText().toString().trim())) {
 
