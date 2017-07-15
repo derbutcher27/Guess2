@@ -17,8 +17,15 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     // Database Name
     private static final String DATABASE_NAME = "guessDB";
-    // Table Name
-    private static final String TABLE_NAME = "FragenUAntworten";
+    // Table Name fuer FragenUAntworten
+    private static final String TABLE_NAME_FA = "FragenUAntworten";
+
+    // Table Name fuer Highscore
+    private static final String TABLE_NAME_HS = "Highscore";
+
+    //Columns of Table "Highscore"
+    private static final String USERNAME = "username";
+    private static final String SCORE = "score";
 
     // Columns of Table "FragenUAntworten"
     private static final String ID = "ID";
@@ -31,16 +38,21 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_FRAGEN_TABLE = "CREATE TABLE " + TABLE_NAME + "("
+        String CREATE_FRAGEN_TABLE = "CREATE TABLE " + TABLE_NAME_FA + "("
                 + ID + " INTEGER PRIMARY KEY," + FRAGE + " TEXT,"
                 + ANTWORT + " TEXT" + ")";
         db.execSQL(CREATE_FRAGEN_TABLE);
+
+        String CREATE_HIGHSCORE_TABLE = "CREATE TABLE " + TABLE_NAME_HS + "("
+                + ID + " INTEGER PRIMARY KEY," + USERNAME + " TEXT,"
+                + SCORE + " INTEGER" + ")";
+        db.execSQL(CREATE_HIGHSCORE_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older table if existed
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_FA);
 
         // Create tables again
         onCreate(db);
@@ -52,7 +64,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         cv.put(FRAGE, fragenUAntworten.getFrage());
         cv.put(ANTWORT, fragenUAntworten.getAntwort());
 
-        db.insert(TABLE_NAME, null, cv);
+        db.insert(TABLE_NAME_FA, null, cv);
         db.close();
     }
 
@@ -60,7 +72,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     public List<FragenUAntworten> getAllFragen() {
         List<FragenUAntworten> FragenList = new ArrayList<FragenUAntworten>();
         // Select All Query
-        String selectQuery = "SELECT  * FROM " + TABLE_NAME;
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME_FA;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -83,7 +95,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
     public int getSize() {
         SQLiteDatabase db = this.getReadableDatabase();
-        long dbSize = DatabaseUtils.queryNumEntries(db, TABLE_NAME);
+        long dbSize = DatabaseUtils.queryNumEntries(db, TABLE_NAME_FA);
         db.close();
         Integer dbSizeINT = (int) (long) dbSize;
 
