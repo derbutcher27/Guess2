@@ -34,9 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
         FragenUAntworten FragenUAntworten = new FragenUAntworten();
 
-
-
-
         Random rand = new Random();
         int n = rand.nextInt(db.getSize());
 
