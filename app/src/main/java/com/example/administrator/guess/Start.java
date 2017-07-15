@@ -16,9 +16,6 @@ public class Start extends AppCompatActivity {
 
         DataBaseHandler db = new DataBaseHandler(this);
         db.addFrage(new FragenUAntworten("Wie weit ist der Mond von der Erde entfernt (in km)?", "384000"));
-       // Log.d("RAIK", "" + db.getSize());
-        Log.d("RAIK", "fsdfsdf");
-        //Fragen.addFragen();
 
         setContentView(R.layout.activity_start);
 
