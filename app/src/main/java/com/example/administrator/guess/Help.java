@@ -14,6 +14,8 @@ public class Help extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
 
+        //Help
+
     }
 
 }

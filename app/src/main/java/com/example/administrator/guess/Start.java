@@ -13,7 +13,6 @@ public class Start extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         DataBaseHandler db = new DataBaseHandler(this);
         db.addFrage(new FragenUAntworten("Wie weit ist der Mond von der Erde entfernt (in km)?", "384000"));
 
