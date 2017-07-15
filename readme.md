@@ -8,6 +8,6 @@ Script um Fragen automatisiert in einheitliches DB-Format umzuwandeln:
 
 https://1drv.ms/u/s!AozYTbmHy_HNikqh8Mx5E83asoXU
 
--Fragen
--Layout
--Highscore
+*Fragen
+*Layout
+*Highscore
