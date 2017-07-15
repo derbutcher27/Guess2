@@ -1,81 +1,92 @@
 package com.example.administrator.guess;
 
-import android.app.Activity;
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-
-import static com.example.administrator.guess.R.id.TextViewFrageDB;
-import static java.security.AccessController.getContext;
-
 
 public class DataBaseHandler extends SQLiteOpenHelper {
 
-    public String FragenUAntwortenTable = "FragenUAntworten";
-    public String Book_Id = "id";
-    public String Fragen = "Fragen";
-    public String Antworten = "Antworten";
+    private int dbSize;
+    // Database Version
+    private static final int DATABASE_VERSION = 1;
+    // Database Name
+    private static final String DATABASE_NAME = "guessDB";
+    // Table Name
+    private static final String TABLE_NAME = "FragenUAntworten";
 
-    private final int DB_Version = 1;
+    // Columns of Table "FragenUAntworten"
+    private static final String ID = "ID";
+    private static final String FRAGE = "Fragen";
+    private static final String ANTWORT = "Antworten";
 
-    public DataBaseHandler(Context context, String DBName, int DBVersion) {
-        super(context, DBName, null, DBVersion);
+    public DataBaseHandler(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("Create Table " + FragenUAntwortenTable + "(" + Book_Id + " INTEGER PRIMARY KEY, " + Fragen + " Text, " + Antworten + " Text);");
+        String CREATE_FRAGEN_TABLE = "CREATE TABLE " + TABLE_NAME + "("
+                + ID + " INTEGER PRIMARY KEY," + FRAGE + " TEXT,"
+                + ANTWORT + " TEXT" + ")";
+        db.execSQL(CREATE_FRAGEN_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        // Drop older table if existed
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
 
+        // Create tables again
+        onCreate(db);
     }
 
-    public void addBook(FragenUAntworten fragenUAntworten) {
+    void addFrage(FragenUAntworten fragenUAntworten) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(Book_Id, fragenUAntworten.getId());
-        cv.put(Fragen, fragenUAntworten.getFragen());
-        cv.put(Antworten, fragenUAntworten.getAntworten());
+        cv.put(FRAGE, fragenUAntworten.getFrage());
+        cv.put(ANTWORT, fragenUAntworten.getAntwort());
 
-        db.insert(FragenUAntwortenTable, null, cv);
+        db.insert(TABLE_NAME, null, cv);
         db.close();
     }
 
+    // Getting All Fragen
+    public List<FragenUAntworten> getAllFragen() {
+        List<FragenUAntworten> FragenList = new ArrayList<FragenUAntworten>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME;
 
-    public ArrayList<FragenUAntworten> fragenUAntwortenArrayList() {
-        ArrayList<FragenUAntworten> FuAList = new ArrayList<FragenUAntworten>();
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
 
-        Cursor c = db.query(FragenUAntwortenTable, null, null, null, null, null, null);
-        c.moveToFirst();
-
-        while (!c.isAfterLast()) {
-            FragenUAntworten fragenUAntworten = new FragenUAntworten();
-            fragenUAntworten.setId(c.getInt(0));
-            fragenUAntworten.setFragen(c.getString(1));
-            fragenUAntworten.setAntworten(c.getString(2));
-            FuAList.add(fragenUAntworten);
-            c.moveToNext();
-
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                FragenUAntworten fragenUAntworten = new FragenUAntworten();
+                fragenUAntworten.setID(Integer.parseInt(cursor.getString(0)));
+                fragenUAntworten.setFrage(cursor.getString(1));
+                fragenUAntworten.setAntwort(cursor.getString(2));
+                // Adding Frage to list
+                FragenList.add(fragenUAntworten);
+            } while (cursor.moveToNext());
         }
 
-        db.close();
-        return FuAList;
-
+        // return Fragen list
+        return FragenList;
     }
 
-    //public static String ArrayValue = FragenUAntworten. ;
+    public int getSize() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        long dbSize = DatabaseUtils.queryNumEntries(db, TABLE_NAME);
+        db.close();
+        Integer dbSizeINT = (int) (long) dbSize;
 
+        return dbSizeINT;
+    }
 }

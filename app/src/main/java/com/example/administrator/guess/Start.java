@@ -2,10 +2,8 @@ package com.example.administrator.guess;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -15,21 +13,29 @@ public class Start extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+        DataBaseHandler db = new DataBaseHandler(this);
+        db.addFrage(new FragenUAntworten("Wie weit ist der Mond von der Erde entfernt (in km)?", "384000"));
+       // Log.d("RAIK", "" + db.getSize());
+        Log.d("RAIK", "fsdfsdf");
+        //Fragen.addFragen();
+
         setContentView(R.layout.activity_start);
 
-        Button button3 = (Button) findViewById(R.id.button3);
-        button3.setOnClickListener(new View.OnClickListener() {
+        Button start = (Button) findViewById(R.id.btnStart);
+        start.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Start.this, MainActivity.class);
+
                 startActivity(i);
             }
 
         });
 
-        Button button4 = (Button) findViewById(R.id.button4);
-        button4.setOnClickListener(new View.OnClickListener() {
+        Button kapitel = (Button) findViewById(R.id.btnKapitel);
+        kapitel.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -39,8 +45,8 @@ public class Start extends AppCompatActivity {
 
         });
 
-        Button button5 = (Button) findViewById(R.id.button5);
-        button5.setOnClickListener(new View.OnClickListener() {
+        Button hilfe = (Button) findViewById(R.id.btnHilfe);
+        hilfe.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {

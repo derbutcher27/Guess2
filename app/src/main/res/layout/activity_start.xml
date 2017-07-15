@@ -8,7 +8,7 @@
     tools:context="com.example.administrator.guess.Start">
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Start"
@@ -22,7 +22,7 @@
         android:layout_alignParentStart="true" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnKapitel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Kapitel"
@@ -30,26 +30,26 @@
         android:background="@color/colorPrimaryDark"
         android:layout_marginTop="20dp"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_below="@+id/button3"
+        android:layout_below="@+id/btnStart"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/btnHilfe"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hilfe"
-        android:textColor="#ffffff"
-        android:background="@color/colorPrimaryDark"
-        android:layout_marginTop="20dp"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_below="@+id/button4"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/btnKapitel"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Hilfe"
+        android:textColor="#ffffff" />
 
 
 </RelativeLayout>
