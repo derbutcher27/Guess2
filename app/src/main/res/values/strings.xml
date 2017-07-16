@@ -5,4 +5,5 @@
     <string name="title_activity_help">Help</string>
     <string name="title_activity_kapitel">Kapitel</string>
     <string name="title_activity_new_game">NewGame</string>
+    <string name="title_activity_high_score">HighScore</string>
 </resources>

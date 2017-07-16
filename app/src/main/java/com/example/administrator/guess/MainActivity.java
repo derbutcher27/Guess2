@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 
@@ -19,8 +22,8 @@ import static java.lang.Long.parseLong;
 
 public class MainActivity extends AppCompatActivity {
 
-    private  final String TAG = "LOG";
-    private  double Ergebnis = 0;
+    private final String TAG = "LOG";
+    private double Ergebnis = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,17 +32,23 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide(); //<< this
         setContentView(R.layout.activity_main);
 
-       // final DataBaseHandler db = new DataBaseHandler(getApplicationContext(), "FragenUAntworten", 1);
-       final DataBaseHandler db = new DataBaseHandler(this);
+        // final DataBaseHandler db = new DataBaseHandler(getApplicationContext(), "FragenUAntworten", 1);
+        final DataBaseHandler db = new DataBaseHandler(this);
 
-        FragenUAntworten FragenUAntworten = new FragenUAntworten();
+        List<Integer> list = new ArrayList<Integer>();
+        int max = db.getSize();
+        Integer n = 0;
+        for (int i = 1; i <= max; i++)
+            list.add(i);
 
-        Random rand = new Random();
-        int n = rand.nextInt(db.getSize());
+        Collections.shuffle(list);
+
+        for (int i = 0; i < max; i++) {
+            n = list.get(i);
+        }
 
         final int ant = n;
         int fr = n;
-
 
         final long zahl2 = parseLong(db.getAllFragen().get(ant).getAntwort());
 
@@ -64,8 +73,6 @@ public class MainActivity extends AppCompatActivity {
         buttonLoesen.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                TextViewAntwortDB.setText(db.getAllFragen().get(ant).getAntwort());
-
                 if (!TextUtils.isEmpty(EditTextEingabeAntwort.getText().toString().trim())) {
 
                     TextViewAntwortUser.setText(EditTextEingabeAntwort.getText().toString());
@@ -75,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
                     Ergebnis = 100 - prozRechnung;
 
                     if (prozRechnung >= 100) {
+                        TextViewAntwortDB.setText(db.getAllFragen().get(ant).getAntwort());
                         TextViewDifferenz.setText("Du hast verloren! Du lagst " + prozRechnung + "% daneben!");
                         yourLife.setText("0");
                         buttonLoesen.setVisibility(View.INVISIBLE);
@@ -91,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                     } else {
+                        TextViewAntwortDB.setText(db.getAllFragen().get(ant).getAntwort());
                         TextViewDifferenz.setText("Du lagst: " + prozRechnung + "% daneben!");
                         yourLife.setText("" + Ergebnis);
 
@@ -100,8 +109,17 @@ public class MainActivity extends AppCompatActivity {
 
                                 if (!TextUtils.isEmpty(TextViewDifferenz.getText().toString().trim())) {
 
-                                    Random rand2 = new Random();
-                                    int n = rand2.nextInt(5);
+                                    List<Integer> list = new ArrayList<Integer>();
+                                    int max = db.getSize();
+                                    Integer n = 0;
+                                    for (int i = 1; i <= max; i++)
+                                        list.add(i);
+
+                                    Collections.shuffle(list);
+
+                                    for (int i = 0; i < max; i++) {
+                                        n = list.get(i);
+                                    }
 
                                     final int ant2 = n;
                                     int fr2 = n;
@@ -140,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
                                                 Ergebnis = Ergebnis - prozRechnung;
 
                                                 if (prozRechnung >= 100) {
+                                                    TextViewAntwortDB.setText(db.getAllFragen().get(ant).getAntwort());
                                                     diff2.setText("Du hast verloren! Du lagst " + prozRechnung + "% daneben!");
                                                     yourLife.setText("0");
                                                     buttonLoesen.setVisibility(View.INVISIBLE);
@@ -157,6 +176,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                                                 } else if (Ergebnis <= 0) {
+                                                    TextViewAntwortDB.setText(db.getAllFragen().get(ant).getAntwort());
                                                     diff2.setText("Du hast verloren! Du lagst " + prozRechnung + "% daneben!");
                                                     yourLife.setText("0");
                                                     buttonLoesen.setVisibility(View.INVISIBLE);
@@ -174,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                                                 } else {
+                                                    TextViewAntwortDB.setText(db.getAllFragen().get(ant).getAntwort());
                                                     diff2.setText("Du lagst " + prozRechnung + "% daneben!");
                                                     yourLife.setText("" + Ergebnis);
                                                     buttonNaechsteFrage.setVisibility(View.VISIBLE);
