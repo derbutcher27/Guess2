@@ -9,7 +9,6 @@ public class FragenUAntworten {
 
     // Empty constructor
     public FragenUAntworten(){
-
     }
     // constructor
     public FragenUAntworten(String frage, String antwort){
