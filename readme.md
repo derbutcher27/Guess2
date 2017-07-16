@@ -8,12 +8,7 @@ Script um Fragen automatisiert in einheitliches DB-Format umzuwandeln:
 
 https://1drv.ms/u/s!AozYTbmHy_HNikqh8Mx5E83asoXU
 
--Kapitel
-Sport
-Technik
-Geographie
-Menschen
-Natur
-
--Fragen
--Layout
+* Fragen
+* Layout
+* Highscore
+* doppelte Fragen vermeiden
