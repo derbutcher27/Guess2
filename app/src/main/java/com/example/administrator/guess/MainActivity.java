@@ -76,13 +76,14 @@ public class MainActivity extends AppCompatActivity {
                 if (!TextUtils.isEmpty(EditTextEingabeAntwort.getText().toString().trim())) {
 
                     TextViewAntwortUser.setText(EditTextEingabeAntwort.getText().toString());
+                    TextViewAntwortDB.setText(db.getAllFragen().get(ant).getAntwort());
 
                     long zahl1 = parseLong(EditTextEingabeAntwort.getText().toString());
                     double prozRechnung = Math.abs(100 - zahl1 * 100 / zahl2);
                     Ergebnis = 100 - prozRechnung;
 
                     if (prozRechnung >= 100) {
-                        TextViewAntwortDB.setText(db.getAllFragen().get(ant).getAntwort());
+
                         TextViewDifferenz.setText("Du hast verloren! Du lagst " + prozRechnung + "% daneben!");
                         yourLife.setText("0");
                         buttonLoesen.setVisibility(View.INVISIBLE);
@@ -99,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                     } else {
-                        TextViewAntwortDB.setText(db.getAllFragen().get(ant).getAntwort());
+
                         TextViewDifferenz.setText("Du lagst: " + prozRechnung + "% daneben!");
                         yourLife.setText("" + Ergebnis);
 
@@ -139,7 +140,6 @@ public class MainActivity extends AppCompatActivity {
                                     diff2.setText("");
                                     antwort2.setText("");
 
-                                    final long zahl3;
                                     final long zahl4 = parseLong(db.getAllFragen().get(ant2).getAntwort());
                                     buttonNaechsteFrage.setVisibility(View.INVISIBLE);
 
@@ -149,16 +149,18 @@ public class MainActivity extends AppCompatActivity {
 
                                             tv4.setText(db.getAllFragen().get(ant2).getAntwort());
 
+
                                             if (!TextUtils.isEmpty(antwort2.getText().toString().trim())) {
 
                                                 eingabe2.setText(antwort2.getText().toString());
+                                                TextViewAntwortDB.setText(db.getAllFragen().get(ant).getAntwort());
 
                                                 long zahl3 = parseLong(antwort2.getText().toString());
                                                 double prozRechnung = Math.abs(100 - zahl3 * 100 / zahl4);
                                                 Ergebnis = Ergebnis - prozRechnung;
 
                                                 if (prozRechnung >= 100) {
-                                                    TextViewAntwortDB.setText(db.getAllFragen().get(ant).getAntwort());
+
                                                     diff2.setText("Du hast verloren! Du lagst " + prozRechnung + "% daneben!");
                                                     yourLife.setText("0");
                                                     buttonLoesen.setVisibility(View.INVISIBLE);
@@ -176,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                                                 } else if (Ergebnis <= 0) {
-                                                    TextViewAntwortDB.setText(db.getAllFragen().get(ant).getAntwort());
+
                                                     diff2.setText("Du hast verloren! Du lagst " + prozRechnung + "% daneben!");
                                                     yourLife.setText("0");
                                                     buttonLoesen.setVisibility(View.INVISIBLE);
@@ -194,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                                                 } else {
-                                                    TextViewAntwortDB.setText(db.getAllFragen().get(ant).getAntwort());
+
                                                     diff2.setText("Du lagst " + prozRechnung + "% daneben!");
                                                     yourLife.setText("" + Ergebnis);
                                                     buttonNaechsteFrage.setVisibility(View.VISIBLE);
