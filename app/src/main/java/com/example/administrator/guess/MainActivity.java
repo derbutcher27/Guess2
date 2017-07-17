@@ -145,19 +145,16 @@ public class MainActivity extends AppCompatActivity {
 
                                     final Button buttonLoesen = (Button) findViewById(R.id.buttonLoesen);
                                     buttonLoesen.setOnClickListener(new View.OnClickListener() {
+
                                         public void onClick(View v) {
-
-                                            tv4.setText(db.getAllFragen().get(ant2).getAntwort());
-
 
                                             if (!TextUtils.isEmpty(antwort2.getText().toString().trim())) {
 
                                                 eingabe2.setText(antwort2.getText().toString());
-                                                TextViewAntwortDB.setText(db.getAllFragen().get(ant).getAntwort());
-
                                                 long zahl3 = parseLong(antwort2.getText().toString());
                                                 double prozRechnung = Math.abs(100 - zahl3 * 100 / zahl4);
                                                 Ergebnis = Ergebnis - prozRechnung;
+                                                TextViewAntwortDB.setText(db.getAllFragen().get(ant2).getAntwort());
 
                                                 if (prozRechnung >= 100) {
 
