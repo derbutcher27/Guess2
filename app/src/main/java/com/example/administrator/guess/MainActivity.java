@@ -104,6 +104,8 @@ public class MainActivity extends AppCompatActivity {
                         TextViewDifferenz.setText("Du lagst: " + prozRechnung + "% daneben!");
                         yourLife.setText("" + Ergebnis);
 
+                        buttonLoesen.setVisibility(View.INVISIBLE);
+
                         buttonNaechsteFrage.setVisibility(View.VISIBLE);
                         buttonNaechsteFrage.setOnClickListener(new View.OnClickListener() {
                             public void onClick(View v) {
@@ -142,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
                                     final long zahl4 = parseLong(db.getAllFragen().get(ant2).getAntwort());
                                     buttonNaechsteFrage.setVisibility(View.INVISIBLE);
+                                    buttonLoesen.setVisibility(View.VISIBLE);
 
                                     final Button buttonLoesen = (Button) findViewById(R.id.buttonLoesen);
                                     buttonLoesen.setOnClickListener(new View.OnClickListener() {
@@ -196,6 +199,7 @@ public class MainActivity extends AppCompatActivity {
 
                                                     diff2.setText("Du lagst " + prozRechnung + "% daneben!");
                                                     yourLife.setText("" + Ergebnis);
+                                                    buttonLoesen.setVisibility(View.INVISIBLE);
                                                     buttonNaechsteFrage.setVisibility(View.VISIBLE);
 
                                                 }
