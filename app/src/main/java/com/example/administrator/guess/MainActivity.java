@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -59,6 +60,13 @@ public class MainActivity extends AppCompatActivity {
             shuffleList.add(i);
         }
         Collections.shuffle(shuffleList);
+
+        Log.d("RAIK", "" + db.getSize("FragenUAntworten"));
+
+        for (int i = 0; i < shuffleList.size(); i++) {
+            Log.d("RAIK", "" + shuffleList.get(i));
+        }
+
 
         //Setzt die erste Frage in die TextView
         tvFrage.setText(getFrage(shuffleList.get(shuffelListIncrease)));
@@ -163,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
             //erzeugt ein popup und beschreibt diese fuer die spaetere anzeige
             AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
             alertBuilder.setCancelable(true);
-            alertBuilder.setMessage("Du hast Leider kein leben mehr. :/");
+            alertBuilder.setMessage("Du hast leider kein Leben mehr. :/");
 
             //zeigt die option ein neues spiel zu starten unter dem popup an
             alertBuilder.setNegativeButton(

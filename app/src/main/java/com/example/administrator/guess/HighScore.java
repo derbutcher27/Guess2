@@ -28,13 +28,18 @@ public class HighScore extends AppCompatActivity {
 
         if (db.getSize("Highscore") == 0) {
         } else {
-            tv1Name.setText(db.getAllHighscores().get(0).getUsername());
-            tv1Score.setText(db.getAllHighscores().get(0).getScore());
-            tv2Name.setText(db.getAllHighscores().get(1).getUsername());
-            tv2Score.setText(db.getAllHighscores().get(1).getScore());
-            tv3Name.setText(db.getAllHighscores().get(2).getUsername());
-            tv3Score.setText(db.getAllHighscores().get(2).getScore());
+
+            try {
+                tv1Name.setText(db.getAllHighscores().get(0).getUsername());
+                tv1Score.setText(db.getAllHighscores().get(0).getScore());
+                tv2Name.setText(db.getAllHighscores().get(1).getUsername());
+                tv2Score.setText(db.getAllHighscores().get(1).getScore());
+                tv3Name.setText(db.getAllHighscores().get(2).getUsername());
+                tv3Score.setText(db.getAllHighscores().get(2).getScore());
+            }catch (IndexOutOfBoundsException e) {
+
+            }
+
         }
     }
-
 }
