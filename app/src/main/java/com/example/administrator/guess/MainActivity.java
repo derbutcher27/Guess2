@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +16,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    //erstellung aller der variablen
     private DataBaseHandler db;
     private List<Integer> shuffleList = new ArrayList<>();
     private int dbSize;
@@ -39,8 +39,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tvHighscore = (TextView) findViewById(R.id.tvHighscore);
-
+        //DB-Objekt auf den alle abfragen zur DB erfolgen
         db = new DataBaseHandler(this);
 
         //layout elemente
@@ -52,12 +51,13 @@ public class MainActivity extends AppCompatActivity {
         btnLoesen = (Button) findViewById(R.id.buttonLoesen);
         btnNaechsteFrage = (Button) findViewById(R.id.buttonNaechsteFrage);
         btnNeuesSpiel = (Button) findViewById(R.id.buttonNewGame);
+        tvHighscore = (TextView) findViewById(R.id.tvHighscore);
 
-
-        dbSize = db.getSize();
+        //ermittelt die tabellen große von FragenUAntworten
+        dbSize = db.getSizeFA();
 
         //erstellt eine zufaellige liste an hand der groeße er DB, die spaeter zur ermittlung der Fragen verwendet werden kann
-        for (int i = 0; i < db.getSize(); i++) {
+        for (int i = 0; i < db.getSizeFA(); i++) {
             shuffleList.add(i);
         }
         Collections.shuffle(shuffleList);
@@ -77,15 +77,23 @@ public class MainActivity extends AppCompatActivity {
                     etAntwortUser.setEnabled(false);
                     btnLoesen.setEnabled(false);
 
+                    //finde die Anzeige der Antwort nicht notwendig da sie nach dem losen noch in der TextBox steht
                     //tvAntwortUser.setText(etAntwortUser.getText());
 
+                    //ruft die berechnungsfunktion fuer das leben auf und uebergibt den wert des users und der db fuer die berechnung
                     liveCalc(Double.parseDouble(etAntwortUser.getText().toString()), Double.parseDouble(dbAntwort));
+
+                    //zeigt das restleben des users nach der berechnung auf zwei nachkommastellen an
                     tvLive.setText(String.valueOf(live));
 
+                    //zeigt die richtige antwort aus der DB an
                     tvAntwortDB.setText(dbAntwort);
 
                 } catch (NumberFormatException e) {
+                    //verhindert das der die TextBox des users leer ist
                     etAntwortUser.setError("Darf nicht leer sein");
+
+                    //schaltet die buttons loesen und die TextBox des users wieder frei die vorher abgeschaltet wurden
                     btnLoesen.setEnabled(true);
                     etAntwortUser.setEnabled(true);
                 }
@@ -98,14 +106,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 try {
-
+                    //setzt die TextViews und die TextBox des users wieder zurück auf null
                     tvAntwortDB.setText(null);
                     etAntwortUser.setText(null);
                     tvAntwortUser.setText(null);
 
+                    //schaltet die buttons loesen und die TextBox des users wieder fuer die naechste frage frei
                     btnLoesen.setEnabled(true);
                     etAntwortUser.setEnabled(true);
 
+                    //zeigt die naechste frage in der textview an und ermittelt bereits die antwort
                     tvFrage.setText(getFrage(shuffleList.get(shuffelListIncrease)));
                     dbAntwort = getAntwort(shuffleList.get(shuffelListIncrease));
 
@@ -114,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //startet ein neues spiel in dem die activity neugeladen wird
         btnNeuesSpiel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -149,12 +160,14 @@ public class MainActivity extends AppCompatActivity {
         if (live <= 0) {
             btnNaechsteFrage.setEnabled(false);
 
-            db.addHighscore(new HighscoreWorker("UsernameRAIK",String.valueOf(highscore)));
+            db.addHighscore(new HighscoreWorker("UsernameRAIK", String.valueOf(highscore)));
 
+            //erzeugt ein popup und beschreibt diese fuer die spaetere anzeige
             AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
             alertBuilder.setCancelable(true);
             alertBuilder.setMessage("Du hast Leider kein leben mehr. :/");
 
+            //zeigt die option ein neues spiel zu starten unter dem popup an
             alertBuilder.setNegativeButton(
                     "Neues Spiel",
                     new DialogInterface.OnClickListener() {
@@ -165,21 +178,28 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
 
+            //zeigt die option sich den highscore anzuzeigen lassen unter dem popup an
             alertBuilder.setPositiveButton(
                     "Highscore",
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            //dialog.cancel();
-                            finish();
-                            //System.exit(0);
+                            Intent i = new Intent(MainActivity.this, HighScore.class);
+                            startActivity(i);
                         }
                     });
-
+            //baut den alterdialog fuer das popup
             AlertDialog popupLost = alertBuilder.create();
+
+            //zeigt das popup an
             popupLost.show();
         } else {
+            //erhoeht den wert fuer die naechste reihe in der DB die zubeginn ausgelesen und geshuffelt wurde
             shuffelListIncrease++;
+
+            //erhoeht den punktestand nachdem eine frage erfolgreich beantwortet wurde
             highscore++;
+
+            //zeigt den neuen highscore an
             tvHighscore.setText("Geschaffte Fragen: " + highscore);
         }
     }

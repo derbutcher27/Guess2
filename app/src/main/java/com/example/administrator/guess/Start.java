@@ -14,6 +14,7 @@ public class Start extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         DataBaseHandler db = new DataBaseHandler(this);
+
         db.addFrage(new FragenUAntworten("Wer hoch ist das höchste Gebäude (m) ?","828"));
         db.addFrage(new FragenUAntworten("Wie hoch ist der Mt. Everest (m) ?","8848"));
         db.addFrage(new FragenUAntworten("In welchem Jahr fiel die Berliner Mauer ?","1989"));
@@ -62,9 +63,6 @@ public class Start extends AppCompatActivity {
         db.addFrage(new FragenUAntworten("Wie viele Kilometer legt ein TShirt insgesamt zurück bis es fertig im Laden hängt ?","50000"));
         db.addFrage(new FragenUAntworten("Wie lang ist ein Marathon (m) ?","42195"));
 
-
-
-
         setContentView(R.layout.activity_start);
 
         Button start = (Button) findViewById(R.id.btnStart);
@@ -75,7 +73,6 @@ public class Start extends AppCompatActivity {
                 Intent i = new Intent(Start.this, MainActivity.class);
                 startActivity(i);
             }
-
         });
 
         Button highscore = (Button) findViewById(R.id.btnHighScore);
@@ -86,7 +83,6 @@ public class Start extends AppCompatActivity {
                 Intent i = new Intent(Start.this, HighScore.class);
                 startActivity(i);
             }
-
         });
 
         Button hilfe = (Button) findViewById(R.id.btnHilfe);
@@ -99,7 +95,5 @@ public class Start extends AppCompatActivity {
             }
 
         });
-
     }
-
 }

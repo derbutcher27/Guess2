@@ -2,6 +2,7 @@ package com.example.administrator.guess;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -93,7 +94,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     }
 
     //read DBsize of table FragenUAntworten
-    public int getSize() {
+    public int getSizeFA() {
         SQLiteDatabase db = this.getReadableDatabase();
         long dbSize = DatabaseUtils.queryNumEntries(db, TABLE_NAME_FA);
         db.close();
@@ -102,7 +103,16 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         return dbSizeINT;
     }
 
-    public void addHighscore (HighscoreWorker highscore){
+    public int getSizeHS() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        long dbSize = DatabaseUtils.queryNumEntries(db, TABLE_NAME_HS);
+        db.close();
+        Integer dbSizeINT = (int) (long) dbSize;
+
+        return dbSizeINT;
+    }
+
+    public void addHighscore(HighscoreWorker highscore) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(USERNAME, highscore.getUsername());
@@ -116,7 +126,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     public List<HighscoreWorker> getAllHighscores() {
         List<HighscoreWorker> HighScoreList = new ArrayList<HighscoreWorker>();
         // Select All Query
-        String selectQuery = "SELECT  * FROM " + TABLE_NAME_HS;
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME_HS + " order by " + SCORE + " desc";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
