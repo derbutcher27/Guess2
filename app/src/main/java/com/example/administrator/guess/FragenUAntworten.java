@@ -25,22 +25,22 @@ public class FragenUAntworten {
         this.id = id;
     }
 
-    // getting frage
+    // getting username
     public String getFrage(){
         return this.frage;
     }
 
-    // setting frage
+    // setting username
     public void setFrage(String frage){
         this.frage = frage;
     }
 
-    // getting antwort
+    // getting score
     public String getAntwort(){
         return this.antwort;
     }
 
-    // setting antwort
+    // setting score
     public void setAntwort(String anwort){
         this.antwort = anwort;
     }

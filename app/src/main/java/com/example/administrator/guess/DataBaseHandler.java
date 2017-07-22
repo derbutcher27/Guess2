@@ -2,7 +2,6 @@ package com.example.administrator.guess;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -101,5 +100,40 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         Integer dbSizeINT = (int) (long) dbSize;
 
         return dbSizeINT;
+    }
+
+    public void addHighscore (HighscoreWorker highscore){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(USERNAME, highscore.getUsername());
+        cv.put(SCORE, highscore.getScore());
+
+        db.insert(TABLE_NAME_HS, null, cv);
+        db.close();
+    }
+
+    // Getting All HighScores
+    public List<HighscoreWorker> getAllHighscores() {
+        List<HighscoreWorker> HighScoreList = new ArrayList<HighscoreWorker>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME_HS;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                HighscoreWorker hsworker = new HighscoreWorker();
+                hsworker.setID(Integer.parseInt(cursor.getString(0)));
+                hsworker.setUsername(cursor.getString(1));
+                hsworker.setScore(cursor.getString(2));
+                // Adding Highscore to list
+                HighScoreList.add(hsworker);
+            } while (cursor.moveToNext());
+        }
+
+        // return Highscore list
+        return HighScoreList;
     }
 }
