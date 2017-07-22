@@ -26,7 +26,7 @@ public class HighScore extends AppCompatActivity {
         tv3Name = (TextView) findViewById(R.id.tv3Name);
         tv3Score = (TextView) findViewById(R.id.tv3Score);
 
-        if (db.getSizeHS() == 0) {
+        if (db.getSize("Highscore") == 0) {
         } else {
             tv1Name.setText(db.getAllHighscores().get(0).getUsername());
             tv1Score.setText(db.getAllHighscores().get(0).getScore());

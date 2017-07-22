@@ -94,18 +94,9 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     }
 
     //read DBsize of table FragenUAntworten
-    public int getSizeFA() {
+    public int getSize(String tabellenName) {
         SQLiteDatabase db = this.getReadableDatabase();
-        long dbSize = DatabaseUtils.queryNumEntries(db, TABLE_NAME_FA);
-        db.close();
-        Integer dbSizeINT = (int) (long) dbSize;
-
-        return dbSizeINT;
-    }
-
-    public int getSizeHS() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        long dbSize = DatabaseUtils.queryNumEntries(db, TABLE_NAME_HS);
+        long dbSize = DatabaseUtils.queryNumEntries(db, tabellenName);
         db.close();
         Integer dbSizeINT = (int) (long) dbSize;
 

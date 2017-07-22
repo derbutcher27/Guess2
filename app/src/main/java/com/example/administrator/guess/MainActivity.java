@@ -54,10 +54,8 @@ public class MainActivity extends AppCompatActivity {
         tvHighscore = (TextView) findViewById(R.id.tvHighscore);
 
         //ermittelt die tabellen große von FragenUAntworten
-        dbSize = db.getSizeFA();
-
         //erstellt eine zufaellige liste an hand der groeße er DB, die spaeter zur ermittlung der Fragen verwendet werden kann
-        for (int i = 0; i < db.getSizeFA(); i++) {
+        for (int i = 0; i < db.getSize("FragenUAntworten"); i++) {
             shuffleList.add(i);
         }
         Collections.shuffle(shuffleList);
