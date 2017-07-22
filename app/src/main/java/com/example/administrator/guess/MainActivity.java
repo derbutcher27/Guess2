@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         //Setzt die erste Frage in die TextView
         tvFrage.setText(getFrage(shuffleList.get(shuffelListIncrease)));
 
-        //ermittelt bereits die score aus der DB ohne sie anzuzeigen
+        //ermittelt bereits die antwort aus der DB ohne sie anzuzeigen
         dbAntwort = getAntwort(shuffleList.get(shuffelListIncrease));
 
         //ButtonLoesen ClickEvent
