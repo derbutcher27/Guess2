@@ -26,13 +26,12 @@
         android:id="@+id/TextViewAntwortDB"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Antwort"
-        android:gravity="center"
-        android:textColor="@color/colorAccent"
-        android:layout_marginTop="80dp"
-        android:layout_below="@+id/TextViewFrageDB"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_below="@+id/TextViewFrageDB"
+        android:layout_marginTop="80dp"
+        android:gravity="center"
+        android:textColor="@color/colorAccent" />
 
     <EditText
         android:id="@+id/EditTextEingabeAntwort"
