@@ -10,5 +10,5 @@ https://1drv.ms/u/s!AozYTbmHy_HNikqh8Mx5E83asoXU
 
 * Fragen
 * Layout
-* Highscore
-* doppelte Fragen vermeiden
+* ~~Highscore~~
+* ~~doppelte Fragen vermeiden~~
