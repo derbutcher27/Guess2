@@ -46,18 +46,19 @@ public class MainActivity extends AppCompatActivity {
         //DB-Objekt auf den alle abfragen zur DB erfolgen
         db = new DataBaseHandler(this);
 
-        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
-        alertBuilder.setCancelable(true);
-        alertBuilder.setMessage("Herzlichen Glückwunsch Du hast fünf Fragen geschafft und erhälts einen Bonus von 25 Punkten");
-        popupBonus = alertBuilder.create();
+        AlertDialog.Builder alertBuilderBonus = new AlertDialog.Builder(this);
+        alertBuilderBonus.setCancelable(true);
+        alertBuilderBonus.setMessage("Herzlichen Glückwunsch Du hast fünf Fragen geschafft und erhälst einen Bonus von 25 Punkten");
 
-        alertBuilder.setPositiveButton(
+        alertBuilderBonus.setPositiveButton(
                 "OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                     }
                 });
+
+        popupBonus = alertBuilderBonus.create();
 
         //layout elemente
         tvFrage = (TextView) findViewById(R.id.TextViewFrageDB);
@@ -225,6 +226,7 @@ public class MainActivity extends AppCompatActivity {
             Log.d("RAIK", "" + highscore);
             if (highscore % 5 == 0) {
                 popupBonus.show();
+                live = live + 25;
             }
 
             //zeigt den neuen highscore an
