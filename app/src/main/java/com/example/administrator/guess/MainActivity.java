@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static android.R.attr.data;
+
 public class MainActivity extends AppCompatActivity {
 
     //erstellung aller der variablen
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText etAntwortUser;
     private Button btnLoesen;
     private Button btnNeuesSpiel;
+    private AlertDialog popupBonus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,19 @@ public class MainActivity extends AppCompatActivity {
 
         //DB-Objekt auf den alle abfragen zur DB erfolgen
         db = new DataBaseHandler(this);
+
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
+        alertBuilder.setCancelable(true);
+        alertBuilder.setMessage("Herzlichen Glückwunsch Du hast fünf Fragen geschafft und erhälts einen Bonus von 25 Punkten");
+        popupBonus = alertBuilder.create();
+
+        alertBuilder.setPositiveButton(
+                "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
 
         //layout elemente
         tvFrage = (TextView) findViewById(R.id.TextViewFrageDB);
@@ -193,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(i);
                         }
                     });
-            //baut den alterdialog fuer das popup
+            //baut den altertdialog fuer das popup
             AlertDialog popupLost = alertBuilder.create();
 
             //zeigt das popup an
@@ -204,6 +220,12 @@ public class MainActivity extends AppCompatActivity {
 
             //erhoeht den punktestand nachdem eine frage erfolgreich beantwortet wurde
             highscore++;
+
+
+            Log.d("RAIK", "" + highscore);
+            if (highscore % 5 == 0) {
+                popupBonus.show();
+            }
 
             //zeigt den neuen highscore an
             tvHighscore.setText("Geschaffte Fragen: " + highscore);
