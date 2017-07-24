@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         AlertDialog.Builder alertBuilderBonus = new AlertDialog.Builder(this);
         alertBuilderBonus.setCancelable(true);
-        alertBuilderBonus.setMessage("Herzlichen Glückwunsch Du hast fünf Fragen geschafft und erhälst einen Bonus von 25 Punkten");
+        alertBuilderBonus.setMessage(getResources().getString(R.string.bonus));
 
         alertBuilderBonus.setPositiveButton(
                 "OK",
@@ -77,12 +77,6 @@ public class MainActivity extends AppCompatActivity {
             shuffleList.add(i);
         }
         Collections.shuffle(shuffleList);
-
-        Log.d("RAIK", "" + db.getSize("FragenUAntworten"));
-
-        for (int i = 0; i < shuffleList.size(); i++) {
-            Log.d("RAIK", "" + shuffleList.get(i));
-        }
 
 
         //Setzt die erste Frage in die TextView
@@ -114,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
 
                 } catch (NumberFormatException e) {
                     //verhindert das der die TextBox des users leer ist
-                    etAntwortUser.setError("Darf nicht leer sein");
+                    etAntwortUser.setError(getResources().getString(R.string.err_empty_ed));
 
                     //schaltet die buttons loesen und die TextBox des users wieder frei die vorher abgeschaltet wurden
                     btnLoesen.setEnabled(true);
@@ -188,11 +182,11 @@ public class MainActivity extends AppCompatActivity {
             //erzeugt ein popup und beschreibt diese fuer die spaetere anzeige
             AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
             alertBuilder.setCancelable(true);
-            alertBuilder.setMessage("Du hast leider kein Leben mehr. :/");
+            alertBuilder.setMessage(getResources().getString(R.string.spiel_verloren));
 
             //zeigt die option ein neues spiel zu starten unter dem popup an
             alertBuilder.setNegativeButton(
-                    "Neues Spiel",
+                    getResources().getString(R.string.new_game),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             Intent intent = getIntent();
@@ -203,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
 
             //zeigt die option sich den highscore anzuzeigen lassen unter dem popup an
             alertBuilder.setPositiveButton(
-                    "Highscore",
+                    getResources().getString(R.string.highscore),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             Intent i = new Intent(MainActivity.this, HighScore.class);
@@ -223,14 +217,13 @@ public class MainActivity extends AppCompatActivity {
             highscore++;
 
 
-            Log.d("RAIK", "" + highscore);
             if (highscore % 5 == 0) {
                 popupBonus.show();
                 live = live + 25;
             }
 
             //zeigt den neuen highscore an
-            tvHighscore.setText("Geschaffte Fragen: " + highscore);
+            tvHighscore.setText(getResources().getString(R.string.geschaffteFragen) + highscore);
         }
     }
 }

@@ -15,6 +15,9 @@ public class Start extends AppCompatActivity {
 
         DataBaseHandler db = new DataBaseHandler(this);
 
+
+        Log.d("RAIK", getResources().getString(R.string.bonus));
+
         //ueberpueft ob Fragen bereits in der DB vorhanden sind und fuegt sie wenn noetig hinzu
         if (db.getSize("FragenUAntworten") != 0) {
         } else {
