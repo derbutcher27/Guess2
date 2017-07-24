@@ -12,3 +12,11 @@ https://1drv.ms/u/s!AozYTbmHy_HNikqh8Mx5E83asoXU
 * Layout
 * ~~Highscore~~
 * ~~doppelte Fragen vermeiden~~
+
+ToDo:
+* Frage in porperties auslagern
+* Events in eigene Mehthode Auslagern (Klasse)
+* UniteTest schreiben
+* DB auslagern, nicht während der Laufzeit erstellen --> beim Build einbauen
+
+Gradle build analyse, Statische Code Analyse, Check Style
