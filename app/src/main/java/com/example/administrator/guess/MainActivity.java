@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                try {
+
                     //setzt die TextViews und die TextBox des users wieder zurück auf null
                     tvAntwortDB.setText(null);
                     etAntwortUser.setText(null);
@@ -136,8 +136,7 @@ public class MainActivity extends AppCompatActivity {
                     tvFrage.setText(getFrage(shuffleList.get(shuffelListIncrease)));
                     dbAntwort = getAntwort(shuffleList.get(shuffelListIncrease));
 
-                } catch (NumberFormatException e) {
-                }
+
             }
         });
 
@@ -146,12 +145,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                try {
+
                     Intent intent = getIntent();
                     finish();
                     startActivity(intent);
-                } catch (NumberFormatException e) {
-                }
+
             }
         });
 
