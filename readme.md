@@ -12,3 +12,6 @@ https://1drv.ms/u/s!AozYTbmHy_HNikqh8Mx5E83asoXU
 * Layout
 * ~~Highscore~~
 * ~~doppelte Fragen vermeiden~~
+
+ToDo:
+Frage in porperties auslagern
