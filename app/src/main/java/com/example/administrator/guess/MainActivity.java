@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -22,8 +23,7 @@ public class MainActivity extends AppCompatActivity {
     //erstellung aller der variablen
     private DataBaseHandler db;
     private List<Integer> shuffleList = new ArrayList<>();
-    private int dbSize;
-    private double live = 100;
+    private Double live = 100d;
     private int shuffelListIncrease = 0;
     private String dbAntwort;
     private int highscore = 0;
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnLoesen;
     private Button btnNeuesSpiel;
     private AlertDialog popupBonus;
+    private ProgressBar pblive;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,12 +65,12 @@ public class MainActivity extends AppCompatActivity {
         tvFrage = (TextView) findViewById(R.id.TextViewFrageDB);
         tvLive = (TextView) findViewById(R.id.tvYourLife);
         tvAntwortDB = (TextView) findViewById(R.id.TextViewAntwortDB);
-        tvAntwortUser = (TextView) findViewById(R.id.TextViewAntwortUser);
         etAntwortUser = (EditText) findViewById(R.id.EditTextEingabeAntwort);
         btnLoesen = (Button) findViewById(R.id.buttonLoesen);
         btnNaechsteFrage = (Button) findViewById(R.id.buttonNaechsteFrage);
         btnNeuesSpiel = (Button) findViewById(R.id.buttonNewGame);
         tvHighscore = (TextView) findViewById(R.id.tvHighscore);
+        pblive = (ProgressBar) findViewById(R.id.progressBar);
 
         //ermittelt die tabellen große von FragenUAntworten
         //erstellt eine zufaellige liste an hand der groeße er DB, die spaeter zur ermittlung der Fragen verwendet werden kann
@@ -123,18 +124,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                    //setzt die TextViews und die TextBox des users wieder zurück auf null
-                    tvAntwortDB.setText(null);
-                    etAntwortUser.setText(null);
-                    tvAntwortUser.setText(null);
+                //setzt die TextViews und die TextBox des users wieder zurück auf null
+                tvAntwortDB.setText(null);
+                etAntwortUser.setText(null);
 
-                    //schaltet die buttons loesen und die TextBox des users wieder fuer die naechste frage frei
-                    btnLoesen.setEnabled(true);
-                    etAntwortUser.setEnabled(true);
+                //schaltet die buttons loesen und die TextBox des users wieder fuer die naechste frage frei
+                btnLoesen.setEnabled(true);
+                etAntwortUser.setEnabled(true);
 
-                    //zeigt die naechste frage in der textview an und ermittelt bereits die antwort
-                    tvFrage.setText(getFrage(shuffleList.get(shuffelListIncrease)));
-                    dbAntwort = getAntwort(shuffleList.get(shuffelListIncrease));
+                //zeigt die naechste frage in der textview an und ermittelt bereits die antwort
+                tvFrage.setText(getFrage(shuffleList.get(shuffelListIncrease)));
+                dbAntwort = getAntwort(shuffleList.get(shuffelListIncrease));
 
 
             }
@@ -146,9 +146,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                    Intent intent = getIntent();
-                    finish();
-                    startActivity(intent);
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
 
             }
         });
@@ -222,6 +222,11 @@ public class MainActivity extends AppCompatActivity {
 
             //zeigt den neuen highscore an
             tvHighscore.setText(getResources().getString(R.string.geschaffteFragen) + highscore);
+
+            Integer intlive = Integer.valueOf(live.intValue());
+
+
+            pblive.setProgress(intlive);
         }
     }
 }

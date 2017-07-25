@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#e4e4e4"
     android:layout_height="match_parent"
     tools:context="com.example.administrator.guess.MainActivity">
@@ -15,10 +17,8 @@
         android:textSize="20dp"
         android:gravity="center"
         android:textColor="@color/colorAccent"
-        android:layout_marginTop="82dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
+        android:layout_marginTop="65dp"
+        android:layout_below="@+id/tvHighscore"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -41,46 +41,18 @@
         android:inputType="number"
         android:textColor="@color/colorAccent"
         android:gravity="center"
-        android:layout_marginBottom="75dp"
-        android:layout_above="@+id/buttonNaechsteFrage"
+        android:layout_above="@+id/buttonLoesen"
         android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:id="@+id/TextViewAntwortUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:gravity="center"
-        android:textColor="@color/colorAccent"
-        android:text=""
-        android:layout_below="@+id/TextViewAntwortDB"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_toRightOf="@+id/TextViewUserAntwort"
-        android:layout_toEndOf="@+id/TextViewUserAntwort" />
-
-    <TextView
-        android:id="@+id/TextViewDifferenz"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity=""
-        android:text=""
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_marginTop="24dp"
-        android:layout_below="@+id/TextViewAntwortUser"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignLeft="@+id/TextViewUserAntwort"
-        android:layout_alignStart="@+id/TextViewUserAntwort" />
 
     <TextView
         android:id="@+id/tvYourLife"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:text="100" />
+        android:text="100"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/buttonLoesen"
@@ -93,7 +65,6 @@
         android:layout_above="@+id/buttonNaechsteFrage"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="20dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -105,12 +76,9 @@
         android:textColor="#ffffff"
         android:background="@color/colorPrimaryDark"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_above="@+id/tvYourLife"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="29dp"
-        android:layout_toLeftOf="@+id/TextViewAntwortUser"
-        android:layout_toStartOf="@+id/TextViewAntwortUser" />
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/buttonNewGame"
@@ -120,32 +88,9 @@
         android:textColor="#ffffff"
         android:background="@color/colorPrimaryDark"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_below="@+id/EditTextEingabeAntwort"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:id="@+id/TextViewRichtigeAntwort"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/TextViewAntwortUser"
-        android:layout_marginLeft="20dp"
-        android:layout_toLeftOf="@+id/TextViewAntwortDB"
-        android:text="Richtige Antwort:"
-        android:textColor="@color/colorPrimaryDark" />
-
-    <TextView
-        android:id="@+id/TextViewUserAntwort"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:text="Deine Antwort:"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_alignBaseline="@+id/TextViewAntwortUser"
-        android:layout_alignBottom="@+id/TextViewAntwortUser"
-        android:layout_alignLeft="@+id/TextViewRichtigeAntwort"
-        android:layout_alignStart="@+id/TextViewRichtigeAntwort"
-        android:layout_toLeftOf="@+id/TextViewAntwortDB"
-        android:layout_toStartOf="@+id/TextViewAntwortDB" />
 
     <TextView
         android:id="@+id/tvHighscore"
@@ -154,5 +99,17 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:text="Geschaffte Fragen:" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:progressDrawable="@drawable/progressbarstyle"
+        android:progress="100"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="16dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
