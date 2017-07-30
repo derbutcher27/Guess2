@@ -16,12 +16,14 @@
         android:text="Frage"
         android:textSize="20dp"
         android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textAlignment="center"
         android:fontFamily="monospace"
         android:textColor="@color/colorAccent"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="60dp"
         android:layout_below="@+id/tvHighscore"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/TextViewAntwortDB"
