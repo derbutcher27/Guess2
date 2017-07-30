@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnNeuesSpiel;
     private AlertDialog popupBonus;
     private ProgressBar pblive;
+    Integer intlive;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
                         tvLive.setText("0");
                     }
                     else{
-                        tvLive.setText(String.valueOf(live));
+                        tvLive.setText(String.valueOf(intlive));
                     }
 
                     //zeigt die richtige antwort aus der DB an
@@ -247,7 +248,9 @@ public class MainActivity extends AppCompatActivity {
             //zeigt den neuen highscore an
             tvHighscore.setText(getResources().getString(R.string.geschaffteFragen) + highscore);
 
-            Integer intlive = Integer.valueOf(live.intValue());
+            intlive = Integer.valueOf(live.intValue());
+
+
 
 
             pblive.setProgress(intlive);
