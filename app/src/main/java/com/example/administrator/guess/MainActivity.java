@@ -237,8 +237,10 @@ public class MainActivity extends AppCompatActivity {
             //erhoeht den punktestand nachdem eine frage erfolgreich beantwortet wurde
             highscore++;
 
-
-
+            if (highscore % 5 == 0) {
+                popupBonus.show();
+                live = live + 25d;
+            }
 
             //zeigt den neuen highscore an
             tvHighscore.setText(getResources().getString(R.string.geschaffteFragen) + highscore);
@@ -253,10 +255,7 @@ public class MainActivity extends AppCompatActivity {
             pblive.setProgress(newIntLife);
             oldIntLife = newIntLife;
 
-            if (highscore % 5 == 0) {
-                popupBonus.show();
-                live = live + 25d;
-            }
+
         }
     }
 }
