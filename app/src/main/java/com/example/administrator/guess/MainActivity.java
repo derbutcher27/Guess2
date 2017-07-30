@@ -252,7 +252,6 @@ public class MainActivity extends AppCompatActivity {
             anim.setDuration(500);
             pblive.startAnimation(anim);
 
-            pblive.setProgress(newIntLife);
             oldIntLife = newIntLife;
 
 
