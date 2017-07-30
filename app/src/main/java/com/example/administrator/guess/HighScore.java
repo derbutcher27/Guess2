@@ -21,21 +21,18 @@ public class HighScore extends AppCompatActivity {
         tv2Score = (TextView) findViewById(R.id.tv2Score);
         tv3Score = (TextView) findViewById(R.id.tv3Score);
 
-        Log.d("RAIK", "" + db.getSize("Highscore"));
-       // Log.d("RAIK", "" + db.getAllHighscores().get(0).getScore());
-//
         switch (db.getSize("Highscore")) {
             case 1:
                 tv1Score.setText(db.getAllHighscores().get(0).getScore());
                 break;
             case 2:
                 tv1Score.setText(db.getAllHighscores().get(0).getScore());
-                tv1Score.setText(db.getAllHighscores().get(1).getScore());
+                tv2Score.setText(db.getAllHighscores().get(1).getScore());
                 break;
             case 3:
                 tv1Score.setText(db.getAllHighscores().get(0).getScore());
-                tv1Score.setText(db.getAllHighscores().get(1).getScore());
-                tv1Score.setText(db.getAllHighscores().get(2).getScore());
+                tv2Score.setText(db.getAllHighscores().get(1).getScore());
+                tv3Score.setText(db.getAllHighscores().get(2).getScore());
                 break;
             default:
         }
