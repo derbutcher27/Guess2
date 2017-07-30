@@ -54,6 +54,7 @@
         android:id="@+id/tvYourLife"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/colorAccent"
         android:text="100"
         android:fontFamily="monospace"
         android:layout_alignTop="@+id/progressBar"
