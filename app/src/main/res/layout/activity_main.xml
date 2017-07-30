@@ -29,13 +29,19 @@
     <TextView
         android:id="@+id/TextViewAntwortDB"
         android:layout_width="200dp"
+        android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
         android:fontFamily="monospace"
         android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:layout_below="@+id/TextViewFrageDB"
-        android:layout_alignLeft="@+id/progressBar"
-        android:layout_alignStart="@+id/progressBar" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:id="@+id/EditTextEingabeAntwort"
@@ -128,5 +134,18 @@
         android:layout_marginTop="36dp"
         android:layout_below="@+id/TextViewAntwortDB"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/tvBonus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/colorAccent"
+        android:fontFamily="monospace"
+        android:textStyle="bold"
+        android:layout_alignBaseline="@+id/tvYourLife"
+        android:layout_alignBottom="@+id/tvYourLife"
+        android:layout_toRightOf="@+id/tvHighscore"
+        android:layout_toEndOf="@+id/tvHighscore" />
 
 </RelativeLayout>
