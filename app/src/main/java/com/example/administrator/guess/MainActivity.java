@@ -200,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
         if (live <= 0) {
             btnNaechsteFrage.setEnabled(false);
 
-            db.addHighscore(new HighscoreWorker("UsernameRAIK", String.valueOf(highscore)));
+            db.addHighscore(new HighscoreWorker(String.valueOf(highscore)));
 
             //erzeugt ein popup und beschreibt diese fuer die spaetere anzeige
             AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);

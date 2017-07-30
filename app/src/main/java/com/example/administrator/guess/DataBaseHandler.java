@@ -24,7 +24,6 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     private static final String TABLE_NAME_HS = "Highscore";
 
     //Columns of Table "Highscore"
-    private static final String USERNAME = "username";
     private static final String SCORE = "score";
 
     // Columns of Table "FragenUAntworten"
@@ -44,8 +43,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_FRAGEN_TABLE);
 
         String CREATE_HIGHSCORE_TABLE = "CREATE TABLE " + TABLE_NAME_HS + "("
-                + ID + " INTEGER PRIMARY KEY," + USERNAME + " TEXT,"
-                + SCORE + " INTEGER" + ")";
+                + ID + " INTEGER PRIMARY KEY," + SCORE + " INTEGER" + ")";
         db.execSQL(CREATE_HIGHSCORE_TABLE);
     }
 
@@ -106,7 +104,6 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     public void addHighscore(HighscoreWorker highscore) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(USERNAME, highscore.getUsername());
         cv.put(SCORE, highscore.getScore());
 
         db.insert(TABLE_NAME_HS, null, cv);
@@ -127,8 +124,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
             do {
                 HighscoreWorker hsworker = new HighscoreWorker();
                 hsworker.setID(Integer.parseInt(cursor.getString(0)));
-                hsworker.setUsername(cursor.getString(1));
-                hsworker.setScore(cursor.getString(2));
+                hsworker.setScore(cursor.getString(1));
                 // Adding Highscore to list
                 HighScoreList.add(hsworker);
             } while (cursor.moveToNext());

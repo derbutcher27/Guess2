@@ -4,7 +4,7 @@ public class HighscoreWorker {
 
     //private variables
     private int id;
-    private String username;
+
     private String score;
 
     // Empty constructor
@@ -12,8 +12,7 @@ public class HighscoreWorker {
     }
 
     // constructor
-    public HighscoreWorker(String username, String score) {
-        this.username = username;
+    public HighscoreWorker(String score) {
         this.score = score;
     }
 
@@ -25,16 +24,6 @@ public class HighscoreWorker {
     // setting ID
     public void setID(int id) {
         this.id = id;
-    }
-
-    // getting username
-    public String getUsername() {
-        return this.username;
-    }
-
-    // setting username
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     // getting score

@@ -19,18 +19,18 @@ public class Start extends AppCompatActivity {
         if (db.getSize("FragenUAntworten") != 0) {
         } else {
             db.addFrage(new FragenUAntworten("Zahl der Hartz-IV-Haushalte in Deutschland in Millionen? (Stand 2016)", "3,2"));
-db.addFrage(new FragenUAntworten("Durchschnittliche Entferung, in der Menschen in den USA zu Ihrer Mutter Wohnen, in Kilometer?", "29"));
-db.addFrage(new FragenUAntworten("Anteil der Nutzerder Dating-App Tinder, die in einer Beziehung sind in Prozent?", "42"));
-db.addFrage(new FragenUAntworten("Betrag den Facebook-Mitarbeiter bekommen können, wenn sie ihre Eizelle einfrieren lassen, in Dollar?", "20000"));
-db.addFrage(new FragenUAntworten("Feinstaubbelastung in Deutschland durch den Straßenverkehr eines Monats, in Tonnen?", "2222"));
-db.addFrage(new FragenUAntworten("Feinstaubbelastung in Deutschland durch die Feuerwerke einer Sylvesternacht, in Tonnen?", "4000"));
-db.addFrage(new FragenUAntworten("Lohn des ehemaligen Microsoft-Praktikanten Wes Cherry für das Programmieren des Spiele-Klassikers Solitaire, in Dollar?", "0"));
-db.addFrage(new FragenUAntworten("Bei welchen Olympischen Spielen gab es die ersten Goldmedaillen für die Sieger?", "1908"));
-db.addFrage(new FragenUAntworten("Wann entstand das Internet?", "1969"));
-db.addFrage(new FragenUAntworten("Wann entstand das World Wide Web?", "1991"));
-db.addFrage(new FragenUAntworten("In Welchem Jahr wurde die erste Domain unter der Top Level Domain .com registriert?", "1985"));
-db.addFrage(new FragenUAntworten("In welchem Jahrhunder wurde das erste Hypertextsystem?", "16"));
-db.addFrage(new FragenUAntworten("Wieviele .com Domains gab es im September 2009?", "82447376"));
+            db.addFrage(new FragenUAntworten("Durchschnittliche Entferung, in der Menschen in den USA zu Ihrer Mutter Wohnen, in Kilometer?", "29"));
+            db.addFrage(new FragenUAntworten("Anteil der Nutzerder Dating-App Tinder, die in einer Beziehung sind in Prozent?", "42"));
+            db.addFrage(new FragenUAntworten("Betrag den Facebook-Mitarbeiter bekommen können, wenn sie ihre Eizelle einfrieren lassen, in Dollar?", "20000"));
+            db.addFrage(new FragenUAntworten("Feinstaubbelastung in Deutschland durch den Straßenverkehr eines Monats, in Tonnen?", "2222"));
+            db.addFrage(new FragenUAntworten("Feinstaubbelastung in Deutschland durch die Feuerwerke einer Sylvesternacht, in Tonnen?", "4000"));
+            db.addFrage(new FragenUAntworten("Lohn des ehemaligen Microsoft-Praktikanten Wes Cherry für das Programmieren des Spiele-Klassikers Solitaire, in Dollar?", "0"));
+            db.addFrage(new FragenUAntworten("Bei welchen Olympischen Spielen gab es die ersten Goldmedaillen für die Sieger?", "1908"));
+            db.addFrage(new FragenUAntworten("Wann entstand das Internet?", "1969"));
+            db.addFrage(new FragenUAntworten("Wann entstand das World Wide Web?", "1991"));
+            db.addFrage(new FragenUAntworten("In Welchem Jahr wurde die erste Domain unter der Top Level Domain .com registriert?", "1985"));
+            db.addFrage(new FragenUAntworten("In welchem Jahrhunder wurde das erste Hypertextsystem?", "16"));
+            db.addFrage(new FragenUAntworten("Wieviele .com Domains gab es im September 2009?", "82447376"));
             db.addFrage(new FragenUAntworten("Wer hoch ist das höchste Gebäude (m) ?", "828"));
             db.addFrage(new FragenUAntworten("Wie hoch ist der Mt. Everest (m) ?", "8848"));
             db.addFrage(new FragenUAntworten("In welchem Jahr fiel die Berliner Mauer ?", "1989"));
