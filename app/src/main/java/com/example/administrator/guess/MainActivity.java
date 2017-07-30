@@ -135,8 +135,10 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
+                    //Button Nächste Frage ausblenden
                     btnNaechsteFrage.setVisibility(View.INVISIBLE);
 
+                    //Wenn Antwort leer Error
                     String antUser = etAntwortUser.getText().toString();
                     if (antUser.trim().equals("")) {
                         etAntwortUser.setError(getResources().getString(R.string.err_empty_ed));
