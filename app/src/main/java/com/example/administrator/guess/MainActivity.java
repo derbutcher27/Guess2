@@ -108,15 +108,14 @@ public class MainActivity extends AppCompatActivity {
                     liveCalc(Double.parseDouble(etAntwortUser.getText().toString()), Double.parseDouble(dbAntwort));
 
                     //zeigt das restleben des users nach der berechnung auf zwei nachkommastellen an
-                    if(live <= 0) {
+                    if (live <= 0) {
                         tvLive.setText("0");
-                    }
-                    else{
+                    } else {
                         tvLive.setText(String.valueOf(live));
                     }
 
                     //zeigt die richtige antwort aus der DB an
-                    tvAntwortDB.setText("Richtige Antwort: "+dbAntwort);
+                    tvAntwortDB.setText("Richtige Antwort: " + dbAntwort);
 
                 } catch (NumberFormatException e) {
                     //verhindert das der die TextBox des users leer ist
@@ -242,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
 
             if (highscore % 5 == 0) {
                 popupBonus.show();
-                live = live + 25;
+                live = live + 25d;
             }
 
             //zeigt den neuen highscore an
@@ -251,6 +250,18 @@ public class MainActivity extends AppCompatActivity {
             intlive = Integer.valueOf(live.intValue());
 
 
+//            try {
+//
+//
+//                for (Integer i = intlive; i >= intlive; i--) {
+//                    pblive.setProgress(i);
+//                    Thread.sleep(500);
+//                }
+//
+//            } catch (InterruptedException e) {
+//
+//                e.printStackTrace();
+//            }
 
 
             pblive.setProgress(intlive);
