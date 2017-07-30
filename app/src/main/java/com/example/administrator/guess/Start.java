@@ -24,7 +24,6 @@ public class Start extends AppCompatActivity {
             db.addFrage(new FragenUAntworten("Betrag den Facebook-Mitarbeiter bekommen können, wenn sie ihre Eizelle einfrieren lassen, in Dollar?", "20000"));
             db.addFrage(new FragenUAntworten("Feinstaubbelastung in Deutschland durch den Straßenverkehr eines Monats, in Tonnen?", "2222"));
             db.addFrage(new FragenUAntworten("Feinstaubbelastung in Deutschland durch die Feuerwerke einer Sylvesternacht, in Tonnen?", "4000"));
-            db.addFrage(new FragenUAntworten("Lohn des ehemaligen Microsoft-Praktikanten Wes Cherry für das Programmieren des Spiele-Klassikers Solitaire, in Dollar?", "0"));
             db.addFrage(new FragenUAntworten("Bei welchen Olympischen Spielen gab es die ersten Goldmedaillen für die Sieger?", "1908"));
             db.addFrage(new FragenUAntworten("Wann entstand das Internet?", "1969"));
             db.addFrage(new FragenUAntworten("Wann entstand das World Wide Web?", "1991"));

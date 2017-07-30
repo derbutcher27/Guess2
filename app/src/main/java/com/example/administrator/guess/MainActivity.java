@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,8 +14,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import static android.R.attr.data;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnNeuesSpiel;
     private AlertDialog popupBonus;
     private ProgressBar pblive;
-    Integer intlive;
+    Integer newIntLife, oldIntLife = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -241,32 +238,25 @@ public class MainActivity extends AppCompatActivity {
             highscore++;
 
 
-            if (highscore % 5 == 0) {
-                popupBonus.show();
-                live = live + 25d;
-            }
+
 
             //zeigt den neuen highscore an
             tvHighscore.setText(getResources().getString(R.string.geschaffteFragen) + highscore);
 
-            intlive = Integer.valueOf(live.intValue());
+            newIntLife = Integer.valueOf(live.intValue());
 
 
-//            try {
-//
-//
-//                for (Integer i = intlive; i >= intlive; i--) {
-//                    pblive.setProgress(i);
-//                    Thread.sleep(500);
-//                }
-//
-//            } catch (InterruptedException e) {
-//
-//                e.printStackTrace();
-//            }
+            ProgressBarAnimation anim = new ProgressBarAnimation(pblive, oldIntLife, newIntLife);
+            anim.setDuration(1000);
+            pblive.startAnimation(anim);
 
+            pblive.setProgress(newIntLife);
+            oldIntLife = newIntLife;
 
-            pblive.setProgress(intlive);
+            if (highscore % 5 == 0) {
+                popupBonus.show();
+                live = live + 25d;
+            }
         }
     }
 }
