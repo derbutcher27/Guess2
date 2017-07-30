@@ -72,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
         tvHighscore = (TextView) findViewById(R.id.tvHighscore);
         pblive = (ProgressBar) findViewById(R.id.progressBar);
 
+        btnNaechsteFrage.setVisibility(View.INVISIBLE);
+        btnNeuesSpiel.setVisibility(View.INVISIBLE);
+
         //ermittelt die tabellen große von FragenUAntworten
         //erstellt eine zufaellige liste an hand der groeße er DB, die spaeter zur ermittlung der Fragen verwendet werden kann
         for (int i = 0; i < db.getSize("FragenUAntworten"); i++) {
@@ -89,11 +92,13 @@ public class MainActivity extends AppCompatActivity {
         //ButtonLoesen ClickEvent
         btnLoesen.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View v) {
 
                 try {
                     etAntwortUser.setEnabled(false);
                     btnLoesen.setEnabled(false);
+                    btnNaechsteFrage.setVisibility(View.VISIBLE);
 
                     //finde die Anzeige der Antwort nicht notwendig da sie nach dem losen noch in der TextBox steht
                     //tvAntwortUser.setText(etAntwortUser.getText());
@@ -102,10 +107,15 @@ public class MainActivity extends AppCompatActivity {
                     liveCalc(Double.parseDouble(etAntwortUser.getText().toString()), Double.parseDouble(dbAntwort));
 
                     //zeigt das restleben des users nach der berechnung auf zwei nachkommastellen an
-                    tvLive.setText(String.valueOf(live));
+                    if(live <= 0) {
+                        tvLive.setText("0");
+                    }
+                    else{
+                        tvLive.setText(String.valueOf(live));
+                    }
 
                     //zeigt die richtige antwort aus der DB an
-                    tvAntwortDB.setText(dbAntwort);
+                    tvAntwortDB.setText("Richtige Antwort: "+dbAntwort);
 
                 } catch (NumberFormatException e) {
                     //verhindert das der die TextBox des users leer ist
@@ -118,40 +128,54 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //buttonNaechsteFrage ClickEvent
-        btnNaechsteFrage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        if (live >= 1) {
+
+            //buttonNaechsteFrage ClickEvent
+            btnNaechsteFrage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    btnNaechsteFrage.setVisibility(View.INVISIBLE);
+
+                    String antUser = etAntwortUser.getText().toString();
+                    if (antUser.trim().equals("")) {
+                        etAntwortUser.setError(getResources().getString(R.string.err_empty_ed));
+                    }
+
+                    //setzt die TextViews und die TextBox des users wieder zurück auf null
+                    tvAntwortDB.setText(null);
+                    etAntwortUser.setText(null);
+
+                    //schaltet die buttons loesen und die TextBox des users wieder fuer die naechste frage frei
+                    btnLoesen.setEnabled(true);
+                    etAntwortUser.setEnabled(true);
+
+                    //zeigt die naechste frage in der textview an und ermittelt bereits die antwort
+                    tvFrage.setText(getFrage(shuffleList.get(shuffelListIncrease)));
+                    dbAntwort = getAntwort(shuffleList.get(shuffelListIncrease));
 
 
-                //setzt die TextViews und die TextBox des users wieder zurück auf null
-                tvAntwortDB.setText(null);
-                etAntwortUser.setText(null);
+                }
+            });
 
-                //schaltet die buttons loesen und die TextBox des users wieder fuer die naechste frage frei
-                btnLoesen.setEnabled(true);
-                etAntwortUser.setEnabled(true);
+        } else {
 
-                //zeigt die naechste frage in der textview an und ermittelt bereits die antwort
-                tvFrage.setText(getFrage(shuffleList.get(shuffelListIncrease)));
-                dbAntwort = getAntwort(shuffleList.get(shuffelListIncrease));
+            btnNeuesSpiel.setVisibility(View.VISIBLE);
 
-
-            }
-        });
-
-        //startet ein neues spiel in dem die activity neugeladen wird
-        btnNeuesSpiel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            //startet ein neues spiel in dem die activity neugeladen wird
+            btnNeuesSpiel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
 
-                Intent intent = getIntent();
-                finish();
-                startActivity(intent);
+                    Intent intent = getIntent();
+                    finish();
+                    startActivity(intent);
 
-            }
-        });
+                }
+            });
+
+        }
 
     }
 

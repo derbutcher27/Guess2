@@ -16,7 +16,7 @@
             android:useLevel="true"
             android:innerRadius="50dp"
             android:thicknessRatio="50">
-            <solid android:color="#e74c3c"> </solid>
+            <solid android:color="#595959"> </solid>
         </shape>
     </item>
 </layer-list>

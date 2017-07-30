@@ -9,28 +9,30 @@
 
     <Button
         android:id="@+id/btnStart"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start"
-        android:textColor="#ffffff"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:background="@color/colorPrimaryDark"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:background="@color/colorPrimaryDark"
+        android:fontFamily="monospace"
+        android:text="Start"
+        android:textColor="@color/colorAccent" />
 
     <Button
         android:id="@+id/btnHighScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="HighScore"
-        android:textColor="#ffffff"
+        android:textColor="@color/colorAccent"
         android:background="@color/colorPrimaryDark"
         android:layout_marginTop="20dp"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_below="@+id/btnStart"
+        android:fontFamily="monospace"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
@@ -45,11 +47,12 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
+        android:fontFamily="monospace"
         android:layout_below="@+id/btnHighScore"
         android:layout_marginTop="20dp"
         android:background="@color/colorPrimaryDark"
         android:text="Hilfe"
-        android:textColor="#ffffff" />
+        android:textColor="@color/colorAccent" />
 
 
 </RelativeLayout>
