@@ -257,7 +257,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }.start();
 
-                //popupBonus.show();
+
 
             }
 
