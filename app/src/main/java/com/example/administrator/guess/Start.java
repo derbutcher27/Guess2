@@ -18,9 +18,9 @@ public class Start extends AppCompatActivity {
         //ueberpueft ob Fragen bereits in der DB vorhanden sind und fuegt sie wenn noetig hinzu
         if (db.getSize("FragenUAntworten") != 0) {
         } else {
-            db.addFrage(new FragenUAntworten("Zahl der Hartz-IV-Haushalte in Deutschland in Millionen? (Stand 2016)", "3,2"));
+
             db.addFrage(new FragenUAntworten("Durchschnittliche Entferung, in der Menschen in den USA zu Ihrer Mutter Wohnen, in Kilometer?", "29"));
-            db.addFrage(new FragenUAntworten("Anteil der Nutzerder Dating-App Tinder, die in einer Beziehung sind in Prozent?", "42"));
+            db.addFrage(new FragenUAntworten("Anteil der Nutzer der Dating-App Tinder, die in einer Beziehung sind in Prozent?", "42"));
             db.addFrage(new FragenUAntworten("Betrag den Facebook-Mitarbeiter bekommen können, wenn sie ihre Eizelle einfrieren lassen, in Dollar?", "20000"));
             db.addFrage(new FragenUAntworten("Feinstaubbelastung in Deutschland durch den Straßenverkehr eines Monats, in Tonnen?", "2222"));
             db.addFrage(new FragenUAntworten("Feinstaubbelastung in Deutschland durch die Feuerwerke einer Sylvesternacht, in Tonnen?", "4000"));
