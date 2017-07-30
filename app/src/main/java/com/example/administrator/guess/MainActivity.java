@@ -249,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             ProgressBarAnimation anim = new ProgressBarAnimation(pblive, oldIntLife, newIntLife);
-            anim.setDuration(1000);
+            anim.setDuration(500);
             pblive.startAnimation(anim);
 
             pblive.setProgress(newIntLife);
