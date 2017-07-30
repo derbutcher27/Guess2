@@ -2,6 +2,7 @@ package com.example.administrator.guess;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText etAntwortUser;
     private Button btnLoesen;
     private Button btnNeuesSpiel;
+    private TextView tvBonus;
     private AlertDialog popupBonus;
     private ProgressBar pblive;
     Integer newIntLife, oldIntLife = 100;
@@ -69,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         btnNeuesSpiel = (Button) findViewById(R.id.buttonNewGame);
         tvHighscore = (TextView) findViewById(R.id.tvHighscore);
         pblive = (ProgressBar) findViewById(R.id.progressBar);
+        tvBonus = (TextView) findViewById(R.id.tvBonus);
 
         btnNaechsteFrage.setVisibility(View.INVISIBLE);
         btnNeuesSpiel.setVisibility(View.INVISIBLE);
@@ -237,9 +240,25 @@ public class MainActivity extends AppCompatActivity {
             //erhoeht den punktestand nachdem eine frage erfolgreich beantwortet wurde
             highscore++;
 
+            //Anzeigen von Bonus 5 Sekunden lang
             if (highscore % 5 == 0) {
-                popupBonus.show();
-                live = live + 25d;
+
+                CountDownTimer timer = new CountDownTimer(5000, 1000) {
+
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        tvBonus.setText("+25");
+                        live = live + 25d;
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        tvBonus.setVisibility(View.INVISIBLE); //(or GONE)
+                    }
+                }.start();
+
+                //popupBonus.show();
+
             }
 
             //zeigt den neuen highscore an
