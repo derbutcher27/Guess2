@@ -74,7 +74,7 @@ public class Start extends AppCompatActivity {
             db.addFrage(new FragenUAntworten("Wie viele Liter Wasser werden benötigt, um 1 Kilo Baumwolle anzubauen ?", "10000"));
             db.addFrage(new FragenUAntworten("Wie warm kann es an der Oberfläche der Sonne werden (Grad Celsius) ?", "5780"));
             db.addFrage(new FragenUAntworten("Wie viele (bekannte) Insektenarten gibt es in der Schweiz ?", "22300"));
-            db.addFrage(new FragenUAntworten("Wie viele Betriebe gab es 2015 in Deutschland ?", "75181"));
+            db.addFrage(new FragenUAntworten("Wie viele Betriebe gab es 2015 in Deutschland ?", "751810"));
             db.addFrage(new FragenUAntworten("Wie viele Kilometer legt ein TShirt insgesamt zurück bis es fertig im Laden hängt ?", "50000"));
             db.addFrage(new FragenUAntworten("Wie lang ist ein Marathon (m) ?", "42195"));
         }

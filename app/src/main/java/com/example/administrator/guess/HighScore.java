@@ -36,7 +36,5 @@ public class HighScore extends AppCompatActivity {
                 break;
             default:
         }
-
-
     }
 }
