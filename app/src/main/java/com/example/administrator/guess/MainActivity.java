@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -113,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                     if (live <= 0) {
                         tvLive.setText("0");
                     } else {
-                        tvLive.setText(String.valueOf(live));
+                        tvLive.setText(String.valueOf(Math.round(live)));
                     }
 
                     //zeigt die richtige antwort aus der DB an
@@ -245,39 +246,37 @@ public class MainActivity extends AppCompatActivity {
             highscore++;
 
             //Anzeigen und anrechnen von Bonus bei exaktem Ergebnis und 5 überstandenen Runden
-            if (dbAntwort.equals(etAntwortUser.getText().toString()) && (highscore % 5 == 0)){
+            if (dbAntwort.equals(etAntwortUser.getText().toString()) && (highscore % 5 == 0)) {
 
-                        tvBonusPositiv.setTextColor(Color.GREEN);
-                        tvBonusPositiv.setText("+50");
-                        live = live + 50d;
+                tvBonusPositiv.setTextColor(Color.GREEN);
+                tvBonusPositiv.setText("+50");
+                live = live + 50d;
 
             }
 
-                //Anzeigen und anrechnen von Bonus bei exaktem Ergebnis
-                else if (dbAntwort.equals(etAntwortUser.getText().toString()) && (highscore % 5 != 0)) {
+            //Anzeigen und anrechnen von Bonus bei exaktem Ergebnis
+            else if (dbAntwort.equals(etAntwortUser.getText().toString()) && (highscore % 5 != 0)) {
 
-                            tvBonusPositiv.setTextColor(Color.GREEN);
-                            tvBonusPositiv.setText("+25");
-                            live = live + 25d;
+                tvBonusPositiv.setTextColor(Color.GREEN);
+                tvBonusPositiv.setText("+25");
+                live = live + 25d;
 
-                }
+            }
 
-                //Anzeigen und anrechnen von Bonus bei jeweils 5 überstandenen Runden
-                else if (highscore % 5 == 0) {
+            //Anzeigen und anrechnen von Bonus bei jeweils 5 überstandenen Runden
+            else if (highscore % 5 == 0) {
 
-                            tvBonusPositiv.setTextColor(Color.GREEN);
-                            tvBonusPositiv.setText("+25");
-                            live = live + 25d;
+                tvBonusPositiv.setTextColor(Color.GREEN);
+                tvBonusPositiv.setText("+25");
+                live = live + 25d;
 
-                }
-
-                else{
+            } else {
                 //Anzeigen von verlorenem Leben
-                abzug = Math.floor(abzug * 100) / 100;
+                double abzugNeu = abzug;
+                abzugNeu = Math.round(abzug);
                 tvLebenNegativ.setTextColor(Color.RED);
-                tvLebenNegativ.setText("-"+ abzug);
+                tvLebenNegativ.setText("-" + abzugNeu);
             }
-
 
             //zeigt den neuen highscore an
             tvHighscore.setText(getResources().getString(R.string.geschaffteFragen) + highscore);
