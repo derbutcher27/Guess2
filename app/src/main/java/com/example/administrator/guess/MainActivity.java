@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                     if (live <= 0) {
                         tvLive.setText("0");
                     } else {
-                        tvLive.setText(String.valueOf(Math.round(live)));
+                        tvLive.setText(String.valueOf(live));
                     }
 
                     //zeigt die richtige antwort aus der DB an
