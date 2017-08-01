@@ -55,7 +55,6 @@
         android:layout_above="@+id/buttonLoesen"
         android:layout_centerHorizontal="true" />
 
-
     <TextView
         android:id="@+id/tvYourLife"
         android:layout_width="wrap_content"
@@ -136,7 +135,7 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:id="@+id/tvBonus"
+        android:id="@+id/tvBonusPositiv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
@@ -145,7 +144,20 @@
         android:textStyle="bold"
         android:layout_alignBaseline="@+id/tvYourLife"
         android:layout_alignBottom="@+id/tvYourLife"
-        android:layout_toRightOf="@+id/tvHighscore"
-        android:layout_toEndOf="@+id/tvHighscore" />
+        android:layout_toRightOf="@+id/progressBar"
+        android:layout_toEndOf="@+id/progressBar" />
+
+    <TextView
+        android:id="@+id/tvLebenNegativ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvYourLife"
+        android:layout_alignBottom="@+id/tvYourLife"
+        android:layout_toEndOf="@+id/progressBar"
+        android:layout_toRightOf="@+id/progressBar"
+        android:fontFamily="monospace"
+        android:text=""
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold" />
 
 </RelativeLayout>

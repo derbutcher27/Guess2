@@ -6,7 +6,7 @@
             android:useLevel="false"
             android:innerRadius="50dp"
             android:thicknessRatio="50"> <!-- Higher values, thinner line -->
-            <solid android:color="@color/colorPrimaryDark"> </solid>
+            <solid android:color="#6f6f78"> </solid>
         </shape>
     </item>
 

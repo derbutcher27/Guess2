@@ -2,6 +2,7 @@ package com.example.administrator.guess;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -30,11 +31,11 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvFrage;
     private TextView tvLive;
     private TextView tvAntwortDB;
-    private TextView tvAntwortUser;
+    private TextView tvLebenNegativ;
     private EditText etAntwortUser;
     private Button btnLoesen;
     private Button btnNeuesSpiel;
-    private TextView tvBonus;
+    private TextView tvBonusPositiv;
     private AlertDialog popupBonus;
     private ProgressBar pblive;
     Integer newIntLife, oldIntLife = 100;
@@ -71,7 +72,8 @@ public class MainActivity extends AppCompatActivity {
         btnNeuesSpiel = (Button) findViewById(R.id.buttonNewGame);
         tvHighscore = (TextView) findViewById(R.id.tvHighscore);
         pblive = (ProgressBar) findViewById(R.id.progressBar);
-        tvBonus = (TextView) findViewById(R.id.tvBonus);
+        tvBonusPositiv = (TextView) findViewById(R.id.tvBonusPositiv);
+        tvLebenNegativ = (TextView) findViewById(R.id.tvLebenNegativ);
 
         btnNaechsteFrage.setVisibility(View.INVISIBLE);
         btnNeuesSpiel.setVisibility(View.INVISIBLE);
@@ -137,6 +139,8 @@ public class MainActivity extends AppCompatActivity {
 
                     //Button Nächste Frage ausblenden
                     btnNaechsteFrage.setVisibility(View.INVISIBLE);
+                    tvBonusPositiv.setText("");
+                    tvLebenNegativ.setText("");
 
                     //Wenn Antwort leer Error
                     String antUser = etAntwortUser.getText().toString();
@@ -240,32 +244,45 @@ public class MainActivity extends AppCompatActivity {
             //erhoeht den punktestand nachdem eine frage erfolgreich beantwortet wurde
             highscore++;
 
-            //Anzeigen von Bonus 5 Sekunden lang
-            if (highscore % 5 == 0) {
+            //Anzeigen und anrechnen von Bonus bei exaktem Ergebnis und 5 überstandenen Runden
+            if (dbAntwort.equals(etAntwortUser.getText().toString()) && (highscore % 5 == 0)){
 
-                CountDownTimer timer = new CountDownTimer(5000, 1000) {
-
-                    @Override
-                    public void onTick(long millisUntilFinished) {
-                        tvBonus.setText("+25");
-                        live = live + 25d;
-                    }
-
-                    @Override
-                    public void onFinish() {
-                        tvBonus.setVisibility(View.INVISIBLE); //(or GONE)
-                    }
-                }.start();
-
-
+                        tvBonusPositiv.setTextColor(Color.GREEN);
+                        tvBonusPositiv.setText("+50");
+                        live = live + 50d;
 
             }
+
+                //Anzeigen und anrechnen von Bonus bei exaktem Ergebnis
+                else if (dbAntwort.equals(etAntwortUser.getText().toString()) && (highscore % 5 != 0)) {
+
+                            tvBonusPositiv.setTextColor(Color.GREEN);
+                            tvBonusPositiv.setText("+25");
+                            live = live + 25d;
+
+                }
+
+                //Anzeigen und anrechnen von Bonus bei jeweils 5 überstandenen Runden
+                else if (highscore % 5 == 0) {
+
+                            tvBonusPositiv.setTextColor(Color.GREEN);
+                            tvBonusPositiv.setText("+25");
+                            live = live + 25d;
+
+                }
+
+                else{
+                //Anzeigen von verlorenem Leben
+                abzug = Math.floor(abzug * 100) / 100;
+                tvLebenNegativ.setTextColor(Color.RED);
+                tvLebenNegativ.setText("-"+ abzug);
+            }
+
 
             //zeigt den neuen highscore an
             tvHighscore.setText(getResources().getString(R.string.geschaffteFragen) + highscore);
 
             newIntLife = Integer.valueOf(live.intValue());
-
 
             ProgressBarAnimation anim = new ProgressBarAnimation(pblive, oldIntLife, newIntLife);
             anim.setDuration(500);
