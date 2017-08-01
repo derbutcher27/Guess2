@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static java.lang.Math.round;
+
 public class MainActivity extends AppCompatActivity {
 
     //erstellung aller der variablen
@@ -201,7 +203,7 @@ public class MainActivity extends AppCompatActivity {
     //berechnet das Leben neu
     public void liveCalc(double prozentwert, double grundwert) {
         double abzug = Math.abs(100d - ((prozentwert / grundwert) * 100d));
-        live = Math.round(100 * (live - abzug)) / 100.0;
+        live = round(100 * (live - abzug)) / 100.0;
 
         if (live <= 0) {
             btnNaechsteFrage.setEnabled(false);
@@ -274,8 +276,9 @@ public class MainActivity extends AppCompatActivity {
 
             //Anzeigen von verlorenem Leben
             else {
+                DecimalFormat df = new DecimalFormat("####0.00");
                 tvLebenNegativ.setTextColor(Color.RED);
-                tvLebenNegativ.setText("-" + (int) abzug);
+                tvLebenNegativ.setText("-" + df.format(abzug));
             }
 
             //zeigt den neuen highscore an
