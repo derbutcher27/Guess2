@@ -11,5 +11,16 @@
     <string name="err_empty_ed">Darf nicht leer sein</string>
     <string name="new_game">Neues Spiel</string>
     <string name="highscore">Highscore</string>
-    <string name="geschaffteFragen">Geschaffte Fragen: </string>
+    <string name="geschaffteFragen">Gelöste Fragen: </string>
+    <string name="help1">Trage dein Ergebnis in das Feld ein</string>
+    <string name="help2">Nach dem Absenden wird prozentual die Differenz zwischen dem richtigen und deinem Ergebnis ermittelt</string>
+    <string name="help3">Nach jeweils 5 Runden erhältst du einen Bonus von 25 Punkten</string>
+    <string name="help4">Tippst Du genau das richtige Ergebnis erhältst Du einen Bonus von 25 Punkten</string>
+    <string name="help5">Sollten die Punkte aufgebraucht sein, endet das Spiel</string>
+    <string name="help6">Wenn Dir Fehler auffallen, benutze bitte den Feedback Button</string>
+    <string name="help7">Viel Spaß :-)</string>
+    <string name="help8"></string>
+
+
+
 </resources>

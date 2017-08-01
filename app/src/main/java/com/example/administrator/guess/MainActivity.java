@@ -51,19 +51,18 @@ public class MainActivity extends AppCompatActivity {
         //DB-Objekt auf den alle abfragen zur DB erfolgen
         db = new DataBaseHandler(this);
 
-        AlertDialog.Builder alertBuilderBonus = new AlertDialog.Builder(this);
-        alertBuilderBonus.setCancelable(true);
-        alertBuilderBonus.setMessage(getResources().getString(R.string.bonus));
+        //AlertDialog.Builder alertBuilderBonus = new AlertDialog.Builder(this);
+        //alertBuilderBonus.setCancelable(true);
+        //alertBuilderBonus.setMessage(getResources().getString(R.string.bonus));
 
-        alertBuilderBonus.setPositiveButton(
-                "OK",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-
-        popupBonus = alertBuilderBonus.create();
+        //alertBuilderBonus.setPositiveButton(
+         //"OK",
+         //       new DialogInterface.OnClickListener() {
+         //           public void onClick(DialogInterface dialog, int id) {
+         //               dialog.cancel();
+         //           }
+         //       });
+        //popupBonus = alertBuilderBonus.create();
 
         //layout elemente
         tvFrage = (TextView) findViewById(R.id.TextViewFrageDB);
