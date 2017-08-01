@@ -270,12 +270,12 @@ public class MainActivity extends AppCompatActivity {
                 tvBonusPositiv.setText("+25");
                 live = live + 25d;
 
-            } else {
-                //Anzeigen von verlorenem Leben
-                double abzugNeu = abzug;
-                abzugNeu = Math.round(abzug);
+            }
+
+            //Anzeigen von verlorenem Leben
+            else {
                 tvLebenNegativ.setTextColor(Color.RED);
-                tvLebenNegativ.setText("-" + abzugNeu);
+                tvLebenNegativ.setText("-" + (int) abzug);
             }
 
             //zeigt den neuen highscore an
