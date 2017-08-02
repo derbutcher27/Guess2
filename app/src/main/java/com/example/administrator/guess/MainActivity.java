@@ -1,11 +1,13 @@
 package com.example.administrator.guess;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -13,10 +15,18 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import java.net.Inet4Address;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import static java.lang.Math.round;
@@ -149,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
             btnNaechsteFrage.setVisibility(View.VISIBLE);
 
             //ruft die berechnungsfunktion fuer das leben auf und uebergibt den wert des users und der db fuer die berechnung
-            liveCalc(Double.parseDouble(etAntwortUser.getText().toString()), Double.parseDouble(dbAntwort));
+            lifecalc(Double.parseDouble(etAntwortUser.getText().toString()), Double.parseDouble(dbAntwort));
 
             //zeigt das restleben des users nach der berechnung auf zwei nachkommastellen an
             if (live <= 0) {
@@ -184,14 +194,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //berechnet das Leben neu
-    public void liveCalc(double prozentwert, double grundwert) {
+    public void lifecalc(double prozentwert, double grundwert) {
         double abzug = Math.abs(100d - ((prozentwert / grundwert) * 100d));
         live = round(100 * (live - abzug)) / 100.0;
 
         if (live <= 0) {
             btnNaechsteFrage.setEnabled(false);
 
-            db.addHighscore(new HighscoreWorker(String.valueOf(highscore)));
+
 
             //erzeugt ein popup und beschreibt diese fuer die spaetere anzeige
             AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
@@ -221,6 +231,17 @@ public class MainActivity extends AppCompatActivity {
             //baut den altertdialog fuer das popup
             AlertDialog popupLost = alertBuilder.create();
 
+
+            //add highscore to highscore file
+
+            String date = new SimpleDateFormat("dd.MM.yyyy").format(new Date()).toString();
+            String hsstr = "Du hast " + highscore.toString() + " Punkte " +" am " + date + " erzielt";
+
+            db.addHighscore(new HighscoreWorker(hsstr));
+
+            Log.d("RAIK", "schreiben " + hsstr);
+
+
             //zeigt das popup an
             popupLost.show();
         } else {
@@ -237,10 +258,7 @@ public class MainActivity extends AppCompatActivity {
                 tvBonusPositiv.setText("+50");
                 live = live + 50d;
 
-                if (live > 100) {
-                    newIntLife = Integer.valueOf(live.intValue());
-                    pblife.setMax(newIntLife);
-                }
+                setMaxpblife();
 
             }
 
@@ -251,11 +269,7 @@ public class MainActivity extends AppCompatActivity {
                 tvBonusPositiv.setText("+25");
                 live = live + 25d;
 
-                if (live > 100) {
-                    newIntLife = Integer.valueOf(live.intValue());
-                    pblife.setMax(newIntLife);
-                }
-
+                setMaxpblife();
             }
 
             //Anzeigen und anrechnen von Bonus bei jeweils 5 überstandenen Runden
@@ -265,11 +279,7 @@ public class MainActivity extends AppCompatActivity {
                 tvBonusPositiv.setText("+25");
                 live = live + 25d;
 
-                if (live > 100) {
-                    newIntLife = Integer.valueOf(live.intValue());
-                    pblife.setMax(newIntLife);
-                }
-
+                setMaxpblife();
             }
 
             //Anzeigen von verlorenem Leben
@@ -289,7 +299,13 @@ public class MainActivity extends AppCompatActivity {
             anim.setDuration(500);
             pblife.startAnimation(anim);
             oldIntLife = newIntLife;
+        }
+    }
 
+    private void setMaxpblife() {
+        if (live > 100) {
+            newIntLife = Integer.valueOf(live.intValue());
+            pblife.setMax(newIntLife);
         }
     }
 }
