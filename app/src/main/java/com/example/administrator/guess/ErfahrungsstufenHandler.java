@@ -1,7 +1,7 @@
 package com.example.administrator.guess;
 
 
-public class Erfahrungsstufen {
+public class ErfahrungsstufenHandler {
 
         //private variables
         int id;
@@ -9,10 +9,10 @@ public class Erfahrungsstufen {
         String ranking;
 
         // Empty constructor
-        public Erfahrungsstufen(){
+        public ErfahrungsstufenHandler(){
         }
         // constructor
-        public Erfahrungsstufen(String xp, String ranking){
+        public ErfahrungsstufenHandler(String xp, String ranking){
             this.xp = xp;
             this.ranking = ranking;
         }
