@@ -1,11 +1,17 @@
 package com.example.administrator.guess;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class Start extends AppCompatActivity {
 
@@ -14,6 +20,8 @@ public class Start extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         DataBaseHandler db = new DataBaseHandler(this);
+
+
 
         //ueberpueft ob Fragen bereits in der DB vorhanden sind und fuegt sie wenn noetig hinzu
         if (db.getSize("FragenUAntworten") != 0) {
@@ -109,4 +117,7 @@ public class Start extends AppCompatActivity {
             }
         });
     }
+
+
+
 }

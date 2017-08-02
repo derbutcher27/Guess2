@@ -288,7 +288,7 @@ public class MainActivity extends AppCompatActivity {
             ProgressBarAnimation anim = new ProgressBarAnimation(pblife, oldIntLife, newIntLife);
             anim.setDuration(500);
             pblife.startAnimation(anim);
-
+            oldIntLife = newIntLife;
 
         }
     }
