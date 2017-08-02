@@ -7,6 +7,8 @@ import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -51,20 +53,6 @@ public class MainActivity extends AppCompatActivity {
         //DB-Objekt auf den alle abfragen zur DB erfolgen
         db = new DataBaseHandler(this);
 
-        //AlertDialog.Builder alertBuilderBonus = new AlertDialog.Builder(this);
-        //alertBuilderBonus.setCancelable(true);
-        //alertBuilderBonus.setMessage(getResources().getString(R.string.bonus));
-
-        //alertBuilderBonus.setPositiveButton(
-         //"OK",
-         //       new DialogInterface.OnClickListener() {
-         //           public void onClick(DialogInterface dialog, int id) {
-         //               dialog.cancel();
-         //           }
-         //       });
-        //popupBonus = alertBuilderBonus.create();
-
-        //layout elemente
         tvFrage = (TextView) findViewById(R.id.TextViewFrageDB);
         tvLive = (TextView) findViewById(R.id.tvYourLife);
         tvAntwortDB = (TextView) findViewById(R.id.TextViewAntwortDB);
@@ -94,41 +82,27 @@ public class MainActivity extends AppCompatActivity {
         //ermittelt bereits die antwort aus der DB ohne sie anzuzeigen
         dbAntwort = getAntwort(shuffleList.get(shuffelListIncrease));
 
+
+        etAntwortUser.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View view, int keyCode, KeyEvent keyevent) {
+                //If the keyevent is a key-down event on the "enter" button
+                if ((keyevent.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    loesen();
+                    return true;
+                }
+                return false;
+            }
+        });
+
+
+
         //ButtonLoesen ClickEvent
         btnLoesen.setOnClickListener(new View.OnClickListener() {
             @Override
 
             public void onClick(View v) {
 
-                try {
-                    etAntwortUser.setEnabled(false);
-                    btnLoesen.setEnabled(false);
-                    btnNaechsteFrage.setVisibility(View.VISIBLE);
-
-                    //finde die Anzeige der Antwort nicht notwendig da sie nach dem losen noch in der TextBox steht
-                    //tvAntwortUser.setText(etAntwortUser.getText());
-
-                    //ruft die berechnungsfunktion fuer das leben auf und uebergibt den wert des users und der db fuer die berechnung
-                    liveCalc(Double.parseDouble(etAntwortUser.getText().toString()), Double.parseDouble(dbAntwort));
-
-                    //zeigt das restleben des users nach der berechnung auf zwei nachkommastellen an
-                    if (live <= 0) {
-                        tvLive.setText("0");
-                    } else {
-                        tvLive.setText(String.valueOf(live));
-                    }
-
-                    //zeigt die richtige antwort aus der DB an
-                    tvAntwortDB.setText("Richtige Antwort: " + dbAntwort);
-
-                } catch (NumberFormatException e) {
-                    //verhindert das der die TextBox des users leer ist
-                    etAntwortUser.setError(getResources().getString(R.string.err_empty_ed));
-
-                    //schaltet die buttons loesen und die TextBox des users wieder frei die vorher abgeschaltet wurden
-                    btnLoesen.setEnabled(true);
-                    etAntwortUser.setEnabled(true);
-                }
+                loesen();
             }
         });
 
@@ -185,6 +159,38 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    private void loesen() {
+        try {
+            etAntwortUser.setEnabled(false);
+            btnLoesen.setEnabled(false);
+            btnNaechsteFrage.setVisibility(View.VISIBLE);
+
+            //finde die Anzeige der Antwort nicht notwendig da sie nach dem losen noch in der TextBox steht
+            //tvAntwortUser.setText(etAntwortUser.getText());
+
+            //ruft die berechnungsfunktion fuer das leben auf und uebergibt den wert des users und der db fuer die berechnung
+            liveCalc(Double.parseDouble(etAntwortUser.getText().toString()), Double.parseDouble(dbAntwort));
+
+            //zeigt das restleben des users nach der berechnung auf zwei nachkommastellen an
+            if (live <= 0) {
+                tvLive.setText("0");
+            } else {
+                tvLive.setText(String.valueOf(live));
+            }
+
+            //zeigt die richtige antwort aus der DB an
+            tvAntwortDB.setText("Richtige Antwort: " + dbAntwort);
+
+        } catch (NumberFormatException e) {
+            //verhindert das der die TextBox des users leer ist
+            etAntwortUser.setError(getResources().getString(R.string.err_empty_ed));
+
+            //schaltet die buttons loesen und die TextBox des users wieder frei die vorher abgeschaltet wurden
+            btnLoesen.setEnabled(true);
+            etAntwortUser.setEnabled(true);
+        }
     }
 
     //holt die Frage aus der DB zur anzeige in der TextView
