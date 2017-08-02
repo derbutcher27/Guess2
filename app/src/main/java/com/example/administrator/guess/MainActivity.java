@@ -28,13 +28,12 @@ public class MainActivity extends AppCompatActivity {
     private DataBaseHandler db;
     private List<Integer> shuffleList = new ArrayList<>();
     private Double live = 100d;
-    private int shuffelListIncrease = 0;
+    private Integer shuffelListIncrease, highscore = 0;
     private String dbAntwort;
-    private int highscore = 0;
     private TextView tvHighscore, tvFrage, tvLive, tvAntwortDB, tvLebenNegativ, etAntwortUser, tvBonusPositiv;
     private Button btnNaechsteFrage, btnNeuesSpiel, btnLoesen;
     private ProgressBar pblive;
-    Integer newIntLife, oldIntLife = 100;
+    Integer newIntLife = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,9 +139,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-
         }
-
     }
 
     private void loesen() {
@@ -277,7 +274,6 @@ public class MainActivity extends AppCompatActivity {
             anim.setDuration(500);
             pblive.startAnimation(anim);
 
-            oldIntLife = newIntLife;
         }
     }
 }
