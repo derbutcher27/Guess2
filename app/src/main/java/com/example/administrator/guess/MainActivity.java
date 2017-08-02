@@ -3,11 +3,9 @@ package com.example.administrator.guess;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.net.Inet4Address;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,11 +27,12 @@ public class MainActivity extends AppCompatActivity {
     private DataBaseHandler db;
     private List<Integer> shuffleList = new ArrayList<>();
     private Double live = 100d;
-    private Integer shuffelListIncrease,highscore = 0;
+    private Integer shuffelListIncrease = 0;
+    private Integer highscore = 0;
     private String dbAntwort;
     private TextView tvHighscore, tvFrage, tvLive, tvAntwortDB, tvLebenNegativ, etAntwortUser, tvBonusPositiv;
     private Button btnNaechsteFrage, btnNeuesSpiel, btnLoesen;
-    private ProgressBar pblive;
+    private ProgressBar pblife;
     Integer newIntLife, oldIntLife = 100;
 
     @Override
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         btnNaechsteFrage = (Button) findViewById(R.id.buttonNaechsteFrage);
         btnNeuesSpiel = (Button) findViewById(R.id.buttonNewGame);
         tvHighscore = (TextView) findViewById(R.id.tvHighscore);
-        pblive = (ProgressBar) findViewById(R.id.progressBar);
+        pblife = (ProgressBar) findViewById(R.id.progressBar);
         tvBonusPositiv = (TextView) findViewById(R.id.tvBonusPositiv);
         tvLebenNegativ = (TextView) findViewById(R.id.tvLebenNegativ);
 
@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             //zeigt die richtige antwort aus der DB an
-            tvAntwortDB.setText(R.string.richtigeAntwort + dbAntwort);
+            tvAntwortDB.setText("Richtige Antwort: " + dbAntwort);
 
         } catch (NumberFormatException e) {
             //verhindert das der die TextBox des users leer ist
@@ -270,9 +270,14 @@ public class MainActivity extends AppCompatActivity {
 
             newIntLife = Integer.valueOf(live.intValue());
 
-            ProgressBarAnimation anim = new ProgressBarAnimation(pblive, oldIntLife, newIntLife);
+            ProgressBarAnimation anim = new ProgressBarAnimation(pblife, oldIntLife, newIntLife);
             anim.setDuration(500);
-            pblive.startAnimation(anim);
+            pblife.startAnimation(anim);
+
+            if (newIntLife > 100) {
+                pblife.setMax(newIntLife);
+            }
+
 
         }
     }

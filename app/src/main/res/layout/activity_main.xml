@@ -116,10 +116,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:fontFamily="monospace"
-        android:textColor="@color/colorAccent"
         android:layout_centerHorizontal="true"
-        android:text="Geschaffte Fragen:" />
+        android:fontFamily="monospace"
+        android:text="Absolvierte Fragen: 0"
+        android:textColor="@color/colorAccent" />
 
     <ProgressBar
         android:id="@+id/progressBar"
