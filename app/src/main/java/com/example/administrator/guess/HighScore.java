@@ -1,15 +1,26 @@
 package com.example.administrator.guess;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class HighScore extends AppCompatActivity {
     private DataBaseHandler db;
     private TextView tv1Score;
     private TextView tv2Score;
     private TextView tv3Score;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +31,8 @@ public class HighScore extends AppCompatActivity {
         tv1Score = (TextView) findViewById(R.id.tv1Score);
         tv2Score = (TextView) findViewById(R.id.tv2Score);
         tv3Score = (TextView) findViewById(R.id.tv3Score);
+
+        Log.d("RAIK", " " + db.getSize("Highscore"));
 
         switch (db.getSize("Highscore")) {
             case 1:
