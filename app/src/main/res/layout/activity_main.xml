@@ -152,13 +152,13 @@
         android:id="@+id/tvLebenNegativ"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tvYourLife"
-        android:layout_alignBottom="@+id/tvYourLife"
-        android:layout_toEndOf="@+id/progressBar"
-        android:layout_toRightOf="@+id/progressBar"
         android:fontFamily="monospace"
         android:text=""
         android:textColor="@color/colorAccent"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_alignBaseline="@+id/tvYourLife"
+        android:layout_alignBottom="@+id/tvYourLife"
+        android:layout_toLeftOf="@+id/progressBar"
+        android:layout_toStartOf="@+id/progressBar" />
 
 </RelativeLayout>
