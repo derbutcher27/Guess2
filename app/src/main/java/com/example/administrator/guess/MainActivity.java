@@ -28,12 +28,12 @@ public class MainActivity extends AppCompatActivity {
     private DataBaseHandler db;
     private List<Integer> shuffleList = new ArrayList<>();
     private Double live = 100d;
-    private Integer shuffelListIncrease, highscore = 0;
+    private Integer shuffelListIncrease,highscore = 0;
     private String dbAntwort;
     private TextView tvHighscore, tvFrage, tvLive, tvAntwortDB, tvLebenNegativ, etAntwortUser, tvBonusPositiv;
     private Button btnNaechsteFrage, btnNeuesSpiel, btnLoesen;
     private ProgressBar pblive;
-    Integer newIntLife = 100;
+    Integer newIntLife, oldIntLife = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
