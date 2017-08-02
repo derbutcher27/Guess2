@@ -198,7 +198,6 @@ public class MainActivity extends AppCompatActivity {
             alertBuilder.setCancelable(true);
             alertBuilder.setMessage(getResources().getString(R.string.spiel_verloren));
 
-
             //zeigt die option ein neues spiel zu starten unter dem popup an
             alertBuilder.setNegativeButton(
                     getResources().getString(R.string.new_game),
@@ -238,6 +237,11 @@ public class MainActivity extends AppCompatActivity {
                 tvBonusPositiv.setText("+50");
                 live = live + 50d;
 
+                if (live > 100) {
+                    newIntLife = Integer.valueOf(live.intValue());
+                    pblife.setMax(newIntLife);
+                }
+
             }
 
             //Anzeigen und anrechnen von Bonus bei exaktem Ergebnis
@@ -247,6 +251,11 @@ public class MainActivity extends AppCompatActivity {
                 tvBonusPositiv.setText("+25");
                 live = live + 25d;
 
+                if (live > 100) {
+                    newIntLife = Integer.valueOf(live.intValue());
+                    pblife.setMax(newIntLife);
+                }
+
             }
 
             //Anzeigen und anrechnen von Bonus bei jeweils 5 überstandenen Runden
@@ -255,6 +264,11 @@ public class MainActivity extends AppCompatActivity {
                 tvBonusPositiv.setTextColor(Color.GREEN);
                 tvBonusPositiv.setText("+25");
                 live = live + 25d;
+
+                if (live > 100) {
+                    newIntLife = Integer.valueOf(live.intValue());
+                    pblife.setMax(newIntLife);
+                }
 
             }
 
@@ -270,13 +284,10 @@ public class MainActivity extends AppCompatActivity {
 
             newIntLife = Integer.valueOf(live.intValue());
 
+
             ProgressBarAnimation anim = new ProgressBarAnimation(pblife, oldIntLife, newIntLife);
             anim.setDuration(500);
             pblife.startAnimation(anim);
-
-            if (newIntLife > 100) {
-                pblife.setMax(newIntLife);
-            }
 
 
         }
