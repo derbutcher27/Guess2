@@ -31,17 +31,8 @@ public class MainActivity extends AppCompatActivity {
     private int shuffelListIncrease = 0;
     private String dbAntwort;
     private int highscore = 0;
-    private TextView tvHighscore;
-    private Button btnNaechsteFrage;
-    private TextView tvFrage;
-    private TextView tvLive;
-    private TextView tvAntwortDB;
-    private TextView tvLebenNegativ;
-    private EditText etAntwortUser;
-    private Button btnLoesen;
-    private Button btnNeuesSpiel;
-    private TextView tvBonusPositiv;
-    private AlertDialog popupBonus;
+    private TextView tvHighscore, tvFrage, tvLive, tvAntwortDB, tvLebenNegativ, etAntwortUser, tvBonusPositiv;
+    private Button btnNaechsteFrage, btnNeuesSpiel, btnLoesen;
     private ProgressBar pblive;
     Integer newIntLife, oldIntLife = 100;
 
@@ -95,13 +86,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
         //ButtonLoesen ClickEvent
         btnLoesen.setOnClickListener(new View.OnClickListener() {
             @Override
 
             public void onClick(View v) {
-
                 loesen();
             }
         });
@@ -135,8 +124,6 @@ public class MainActivity extends AppCompatActivity {
                     //zeigt die naechste frage in der textview an und ermittelt bereits die antwort
                     tvFrage.setText(getFrage(shuffleList.get(shuffelListIncrease)));
                     dbAntwort = getAntwort(shuffleList.get(shuffelListIncrease));
-
-
                 }
             });
 
@@ -148,12 +135,9 @@ public class MainActivity extends AppCompatActivity {
             btnNeuesSpiel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-
                     Intent intent = getIntent();
                     finish();
                     startActivity(intent);
-
                 }
             });
 
@@ -167,9 +151,6 @@ public class MainActivity extends AppCompatActivity {
             btnLoesen.setEnabled(false);
             btnNaechsteFrage.setVisibility(View.VISIBLE);
 
-            //finde die Anzeige der Antwort nicht notwendig da sie nach dem losen noch in der TextBox steht
-            //tvAntwortUser.setText(etAntwortUser.getText());
-
             //ruft die berechnungsfunktion fuer das leben auf und uebergibt den wert des users und der db fuer die berechnung
             liveCalc(Double.parseDouble(etAntwortUser.getText().toString()), Double.parseDouble(dbAntwort));
 
@@ -181,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             //zeigt die richtige antwort aus der DB an
-            tvAntwortDB.setText("Richtige Antwort: " + dbAntwort);
+            tvAntwortDB.setText(R.string.richtigeAntwort + dbAntwort);
 
         } catch (NumberFormatException e) {
             //verhindert das der die TextBox des users leer ist
@@ -219,6 +200,7 @@ public class MainActivity extends AppCompatActivity {
             AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
             alertBuilder.setCancelable(true);
             alertBuilder.setMessage(getResources().getString(R.string.spiel_verloren));
+
 
             //zeigt die option ein neues spiel zu starten unter dem popup an
             alertBuilder.setNegativeButton(
@@ -296,8 +278,6 @@ public class MainActivity extends AppCompatActivity {
             pblive.startAnimation(anim);
 
             oldIntLife = newIntLife;
-
-
         }
     }
 }
