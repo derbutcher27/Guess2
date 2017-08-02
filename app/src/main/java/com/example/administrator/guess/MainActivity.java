@@ -308,17 +308,4 @@ public class MainActivity extends AppCompatActivity {
             pblife.setMax(newIntLife);
         }
     }
-
-    private void writeHighscore(String data, Context context) {
-        try {
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("highscore.txt", Context.MODE_PRIVATE));
-            //outputStreamWriter.write(data);
-            outputStreamWriter.append(data);
-            outputStreamWriter.close();
-        } catch (IOException e) {
-            Log.e("Exception", "File write failed: " + e.toString());
-        }
-    }
-
-
 }
