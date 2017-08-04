@@ -15,6 +15,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     private int dbSize;
     // Database Version
     private static final int DATABASE_VERSION = 1;
+
     // Database Name
     private static final String DATABASE_NAME = "guessDB";
     // Table Name fuer FragenUAntworten
@@ -22,9 +23,14 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
     // Table Name fuer Highscore
     private static final String TABLE_NAME_HS = "Highscore";
-
     //Columns of Table "Highscore"
     private static final String SCORE = "score";
+
+    // Table Name fuer XP
+    private static final String TABLE_NAME_XP = "Experience";
+    //Columns of Table "XP"
+    private static final String XP = "xp";
+    //Columns of Table "RANKING"
 
     // Columns of Table "FragenUAntworten"
     private static final String ID = "ID";
@@ -45,6 +51,10 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         String CREATE_HIGHSCORE_TABLE = "CREATE TABLE " + TABLE_NAME_HS + "("
                 + ID + " INTEGER PRIMARY KEY," + SCORE + " INTEGER" + ")";
         db.execSQL(CREATE_HIGHSCORE_TABLE);
+
+        String CREATE_XP_TABLE = "CREATE TABLE " + TABLE_NAME_XP + "("
+                + ID + " INTEGER PRIMARY KEY," + XP + " INTEGER" + ")";
+        db.execSQL(CREATE_XP_TABLE);
     }
 
     @Override
@@ -133,4 +143,39 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         // return Highscore list
         return HighScoreList;
     }
+
+
+    public void addExperience(ErfahrungsstufenHandler erfahrung) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(XP, erfahrung.getXp());
+
+        db.insert(TABLE_NAME_XP, null, cv);
+        db.close();
+    }
+
+    // Getting All HighScores
+    public List<ErfahrungsstufenHandler> getAllXP() {
+        List<ErfahrungsstufenHandler> XPList = new ArrayList<ErfahrungsstufenHandler>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME_XP;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                ErfahrungsstufenHandler efshandler = new ErfahrungsstufenHandler();
+                efshandler.setID(Integer.parseInt(cursor.getString(0)));
+                efshandler.setXp(cursor.getString(1));
+                // Adding XP to list
+                XPList.add(efshandler);
+            } while (cursor.moveToNext());
+        }
+
+        // return XPList list
+        return XPList;
+    }
+
 }

@@ -61,6 +61,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/colorAccent"
         android:text="100"
+        android:maxLength="5"
         android:fontFamily="monospace"
         android:layout_alignTop="@+id/progressBar"
         android:layout_centerHorizontal="true"
@@ -160,5 +161,17 @@
         android:layout_alignBottom="@+id/tvYourLife"
         android:layout_toLeftOf="@+id/progressBar"
         android:layout_toStartOf="@+id/progressBar" />
+
+    <TextView
+        android:id="@+id/tvXP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:fontFamily="monospace"
+        android:text=""
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold"
+        android:layout_below="@+id/progressBar"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

@@ -12,7 +12,7 @@ public class ErfahrungsstufenHandler {
         public ErfahrungsstufenHandler(){
         }
         // constructor
-        public ErfahrungsstufenHandler(String xp, String ranking){
+        public ErfahrungsstufenHandler(String xp){
             this.xp = xp;
             this.ranking = ranking;
         }

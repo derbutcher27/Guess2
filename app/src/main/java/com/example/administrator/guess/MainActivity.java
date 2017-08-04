@@ -29,6 +29,8 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+import static android.graphics.Color.RED;
+import static android.graphics.Color.YELLOW;
 import static java.lang.Math.round;
 
 public class MainActivity extends AppCompatActivity {
@@ -40,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
     private Integer shuffelListIncrease = 0;
     private Integer highscore = 0;
     private String dbAntwort;
-    private TextView tvHighscore, tvFrage, tvLive, tvAntwortDB, tvLebenNegativ, etAntwortUser, tvBonusPositiv;
+    private Integer xp = 0;
+    private TextView tvHighscore, tvFrage, tvLive, tvAntwortDB, tvLebenNegativ, etAntwortUser, tvBonusPositiv, tvXP;
     private Button btnNaechsteFrage, btnNeuesSpiel, btnLoesen;
     private ProgressBar pblife;
     Integer newIntLife, oldIntLife = 100;
@@ -64,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         pblife = (ProgressBar) findViewById(R.id.progressBar);
         tvBonusPositiv = (TextView) findViewById(R.id.tvBonusPositiv);
         tvLebenNegativ = (TextView) findViewById(R.id.tvLebenNegativ);
+        tvXP = (TextView) findViewById(R.id.tvXP);
 
         btnNaechsteFrage.setVisibility(View.INVISIBLE);
         btnNeuesSpiel.setVisibility(View.INVISIBLE);
@@ -200,11 +204,10 @@ public class MainActivity extends AppCompatActivity {
 
         if (live <= 0) {
             btnNaechsteFrage.setEnabled(false);
-
-
+            btnNeuesSpiel.setVisibility(View.VISIBLE);
 
             //erzeugt ein popup und beschreibt diese fuer die spaetere anzeige
-            AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
+            AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this, R.style.MyDialogTheme);
             alertBuilder.setCancelable(true);
             alertBuilder.setMessage(getResources().getString(R.string.spiel_verloren));
 
@@ -285,7 +288,7 @@ public class MainActivity extends AppCompatActivity {
             //Anzeigen von verlorenem Leben
             else {
                 DecimalFormat df = new DecimalFormat("####0.00");
-                tvLebenNegativ.setTextColor(Color.RED);
+                tvLebenNegativ.setTextColor(RED);
                 tvLebenNegativ.setText("-" + df.format(abzug));
             }
 
