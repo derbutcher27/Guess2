@@ -207,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
             btnNeuesSpiel.setVisibility(View.VISIBLE);
 
             //erzeugt ein popup und beschreibt diese fuer die spaetere anzeige
-            AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this, R.style.MyDialogTheme);
+            AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
             alertBuilder.setCancelable(true);
             alertBuilder.setMessage(getResources().getString(R.string.spiel_verloren));
 
