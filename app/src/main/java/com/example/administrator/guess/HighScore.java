@@ -17,8 +17,7 @@ import java.util.Collections;
 
 public class HighScore extends AppCompatActivity {
     private DataBaseHandler db;
-    private TextView tv1Score,tv2Score, tv3Score,tv4Score, tv5Score, tv6Score, tv7Score;
-
+    private TextView tv1Score, tv2Score, tv3Score, tv4Score, tv5Score, tv6Score, tv7Score;
 
 
     @Override
@@ -36,6 +35,7 @@ public class HighScore extends AppCompatActivity {
         tv7Score = (TextView) findViewById(R.id.tv3Score);
 
         Log.d("RAIK", " " + db.getSize("Highscore"));
+        Log.d("RAIK", " dfgdfg");
 
         switch (db.getSize("Highscore")) {
             case 1:
@@ -55,12 +55,14 @@ public class HighScore extends AppCompatActivity {
                 tv2Score.setText(db.getAllHighscores().get(1).getScore() + " " + " " + db.getAllHighscores().get(1).getDate());
                 tv3Score.setText(db.getAllHighscores().get(2).getScore() + " " + " " + db.getAllHighscores().get(2).getDate());
                 tv4Score.setText(db.getAllHighscores().get(3).getScore() + " " + " " + db.getAllHighscores().get(3).getDate());
+                break;
             case 5:
                 tv1Score.setText(db.getAllHighscores().get(0).getScore() + " " + " " + db.getAllHighscores().get(0).getDate());
                 tv2Score.setText(db.getAllHighscores().get(1).getScore() + " " + " " + db.getAllHighscores().get(1).getDate());
                 tv3Score.setText(db.getAllHighscores().get(2).getScore() + " " + " " + db.getAllHighscores().get(2).getDate());
                 tv4Score.setText(db.getAllHighscores().get(3).getScore() + " " + " " + db.getAllHighscores().get(3).getDate());
                 tv5Score.setText(db.getAllHighscores().get(4).getScore() + " " + " " + db.getAllHighscores().get(4).getDate());
+                break;
             case 6:
                 tv1Score.setText(db.getAllHighscores().get(0).getScore() + " " + " " + db.getAllHighscores().get(0).getDate());
                 tv2Score.setText(db.getAllHighscores().get(1).getScore() + " " + " " + db.getAllHighscores().get(1).getDate());
@@ -68,6 +70,7 @@ public class HighScore extends AppCompatActivity {
                 tv4Score.setText(db.getAllHighscores().get(3).getScore() + " " + " " + db.getAllHighscores().get(3).getDate());
                 tv5Score.setText(db.getAllHighscores().get(4).getScore() + " " + " " + db.getAllHighscores().get(4).getDate());
                 tv6Score.setText(db.getAllHighscores().get(5).getScore() + " " + " " + db.getAllHighscores().get(5).getDate());
+                break;
             case 7:
                 tv1Score.setText(db.getAllHighscores().get(0).getScore() + " " + " " + db.getAllHighscores().get(0).getDate());
                 tv2Score.setText(db.getAllHighscores().get(1).getScore() + " " + " " + db.getAllHighscores().get(1).getDate());
@@ -76,6 +79,7 @@ public class HighScore extends AppCompatActivity {
                 tv5Score.setText(db.getAllHighscores().get(4).getScore() + " " + " " + db.getAllHighscores().get(4).getDate());
                 tv6Score.setText(db.getAllHighscores().get(5).getScore() + " " + " " + db.getAllHighscores().get(5).getDate());
                 tv7Score.setText(db.getAllHighscores().get(6).getScore() + " " + " " + db.getAllHighscores().get(6).getDate());
+                break;
             default:
         }
     }
