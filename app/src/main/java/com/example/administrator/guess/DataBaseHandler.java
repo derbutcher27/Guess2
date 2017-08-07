@@ -25,6 +25,8 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     private static final String TABLE_NAME_HS = "Highscore";
     //Columns of Table "Highscore"
     private static final String SCORE = "score";
+    private static final String DATE = "date";
+
 
     // Table Name fuer XP
     private static final String TABLE_NAME_XP = "Experience";
@@ -49,7 +51,8 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_FRAGEN_TABLE);
 
         String CREATE_HIGHSCORE_TABLE = "CREATE TABLE " + TABLE_NAME_HS + "("
-                + ID + " INTEGER PRIMARY KEY," + SCORE + " INTEGER" + ")";
+                + ID + " INTEGER PRIMARY KEY," + DATE + " TEXT,"
+                + SCORE + " INTEGER" + ")";
         db.execSQL(CREATE_HIGHSCORE_TABLE);
 
         String CREATE_XP_TABLE = "CREATE TABLE " + TABLE_NAME_XP + "("
@@ -114,6 +117,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     public void addHighscore(HighscoreWorker highscore) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
+        cv.put(DATE, highscore.getDate());
         cv.put(SCORE, highscore.getScore());
 
         db.insert(TABLE_NAME_HS, null, cv);
@@ -134,7 +138,8 @@ public class DataBaseHandler extends SQLiteOpenHelper {
             do {
                 HighscoreWorker hsworker = new HighscoreWorker();
                 hsworker.setID(Integer.parseInt(cursor.getString(0)));
-                hsworker.setScore(cursor.getString(1));
+                hsworker.setDate(cursor.getString(1));
+                hsworker.setScore(cursor.getInt(2));
                 // Adding Highscore to list
                 HighScoreList.add(hsworker);
             } while (cursor.moveToNext());
@@ -143,7 +148,6 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         // return Highscore list
         return HighScoreList;
     }
-
 
     public void addExperience(ErfahrungsstufenHandler erfahrung) {
         SQLiteDatabase db = this.getWritableDatabase();

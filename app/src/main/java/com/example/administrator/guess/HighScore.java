@@ -36,16 +36,16 @@ public class HighScore extends AppCompatActivity {
 
         switch (db.getSize("Highscore")) {
             case 1:
-                tv1Score.setText(db.getAllHighscores().get(0).getScore());
+                tv1Score.setText(db.getAllHighscores().get(0).getScore() + " " + " " + db.getAllHighscores().get(0).getDate());
                 break;
             case 2:
-                tv1Score.setText(db.getAllHighscores().get(0).getScore());
-                tv2Score.setText(db.getAllHighscores().get(1).getScore());
+                tv1Score.setText(db.getAllHighscores().get(0).getScore() + " " + " " + db.getAllHighscores().get(0).getDate());
+                tv2Score.setText(db.getAllHighscores().get(1).getScore() + " " + " " + db.getAllHighscores().get(1).getDate());
                 break;
             case 3:
-                tv1Score.setText(db.getAllHighscores().get(0).getScore());
-                tv2Score.setText(db.getAllHighscores().get(1).getScore());
-                tv3Score.setText(db.getAllHighscores().get(2).getScore());
+                tv1Score.setText(db.getAllHighscores().get(0).getScore() + " " + " " + db.getAllHighscores().get(0).getDate());
+                tv2Score.setText(db.getAllHighscores().get(1).getScore() + " " + " " + db.getAllHighscores().get(1).getDate());
+                tv3Score.setText(db.getAllHighscores().get(2).getScore() + " " + " " + db.getAllHighscores().get(2).getDate());
                 break;
             default:
         }

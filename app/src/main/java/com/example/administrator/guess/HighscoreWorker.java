@@ -4,15 +4,16 @@ public class HighscoreWorker {
 
     //private variables
     private int id;
-
-    private String score;
+    private String date;
+    private Integer score;
 
     // Empty constructor
     public HighscoreWorker() {
     }
 
     // constructor
-    public HighscoreWorker(String score) {
+    public HighscoreWorker(String date, Integer score) {
+        this.date = date;
         this.score = score;
     }
 
@@ -26,13 +27,23 @@ public class HighscoreWorker {
         this.id = id;
     }
 
+    // getting username
+    public String getDate() {
+        return this.date;
+    }
+
+    // setting username
+    public void setDate(String username) {
+        this.date = username;
+    }
+
     // getting score
-    public String getScore() {
+    public Integer getScore() {
         return this.score;
     }
 
     // setting score
-    public void setScore(String score) {
+    public void setScore(Integer score) {
         this.score = score;
     }
 }

@@ -238,11 +238,11 @@ public class MainActivity extends AppCompatActivity {
             //add highscore to highscore file
 
             String date = new SimpleDateFormat("dd.MM.yyyy").format(new Date()).toString();
-            String hsstr = "Du hast " + highscore.toString() + " Punkte " +" am " + date + " erzielt";
+            //String hsstr = "Du hast " + highscore.toString() + " Punkte " +" am " + date + " erzielt";
 
-            db.addHighscore(new HighscoreWorker(hsstr));
+            db.addHighscore(new HighscoreWorker(date.toString(), highscore));
 
-            Log.d("RAIK", "schreiben " + hsstr);
+            Log.d("RAIK", "schreiben " + highscore);
 
 
             //zeigt das popup an
