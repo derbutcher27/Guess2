@@ -26,7 +26,13 @@ public class Start extends AppCompatActivity {
         //ueberpueft ob Fragen bereits in der DB vorhanden sind und fuegt sie wenn noetig hinzu
         if (db.getSize("FragenUAntworten") != 0) {
         } else {
-
+            db.addFrage(new FragenUAntworten("Wie viele Weihnachtsbäume werden in Deutschland pro Jahr verkauft?","30000000"));
+            db.addFrage(new FragenUAntworten("Im Jahr 2013 gab es in Deutschland ungefähr 15.000 Tankstellen. Wie viele Tankstellen gab es vor noch 50 Jahren um das Jahr 1970?","60000"));
+            db.addFrage(new FragenUAntworten("Wie viele Liter Bier werden in Deutschland pro Kopf jährlich getrunken?","100"));
+            db.addFrage(new FragenUAntworten("Wie viele Piratenüberfälle gab es 2012 weltweit?","300"));
+            db.addFrage(new FragenUAntworten("Wie viele Menschen in Deutschland nutzen ein Smartphone?","40000000"));
+            db.addFrage(new FragenUAntworten("Wie viele gesetzliche Krankenkassen gibt es in Deutschland?","1815"));
+            db.addFrage(new FragenUAntworten("Wie viele Kinder wurden 2014 nicht im Krankenhaus geboren?","11391"));
             db.addFrage(new FragenUAntworten("Durchschnittliche Entferung, in der Menschen in den USA zu Ihrer Mutter Wohnen, in Kilometer?", "29"));
             db.addFrage(new FragenUAntworten("Anteil der Nutzer der Dating-App Tinder, die in einer Beziehung sind in Prozent?", "42"));
             db.addFrage(new FragenUAntworten("Betrag den Facebook-Mitarbeiter bekommen können, wenn sie ihre Eizelle einfrieren lassen, in Dollar?", "20000"));
