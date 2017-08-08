@@ -92,6 +92,7 @@ public class Start extends AppCompatActivity {
             db.addFrage(new FragenUAntworten("Wie viele Länder gibt es auf der Welt ?", "194"));
             db.addFrage(new FragenUAntworten("Wie viel Geld geben Männer durchschnittlich im Monat für Kleidung aus? (€)", "23"));
             db.addFrage(new FragenUAntworten("Wie viel Geld geben Frauen durchschnittlich im Monat für Kleidung aus? (€)", "44"));
+            db.addFrage(new FragenUAntworten("Wie viel Geld geben Deutsche durchschnittlich für einen Neuwagen aus (€)", "31400"));
         }
 
         setContentView(R.layout.activity_start);
