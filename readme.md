@@ -6,7 +6,7 @@ https://stackoverflow.com/questions/43134044/how-to-create-simple-sqlite-databas
 
 Script um Fragen automatisiert in einheitliches DB-Format umzuwandeln:
 
-https://1drv.ms/u/s!AozYTbmHy_HNik2EhLMjIdn56i_M
+https://1drv.ms/f/s!AozYTbmHy_HNik9NjnuUmpVbH2zL
 
 * Fragen
 * Layout
