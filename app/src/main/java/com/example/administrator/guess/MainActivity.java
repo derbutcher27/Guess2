@@ -204,7 +204,17 @@ public class MainActivity extends AppCompatActivity {
 
         if (live <= 0) {
             btnNaechsteFrage.setEnabled(false);
+
             btnNeuesSpiel.setVisibility(View.VISIBLE);
+
+            btnNeuesSpiel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = getIntent();
+                    finish();
+                    startActivity(intent);
+                }
+            });
 
             //erzeugt ein popup und beschreibt diese fuer die spaetere anzeige
             AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
