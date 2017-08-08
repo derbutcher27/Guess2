@@ -174,4 +174,19 @@
         android:layout_below="@+id/progressBar"
         android:layout_centerHorizontal="true" />
 
+    <Button
+        android:id="@+id/btnHighScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Highscore"
+        android:textColor="@color/colorAccent"
+        android:fontFamily="monospace"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:background="@color/colorPrimaryDark"
+        android:layout_above="@+id/buttonNaechsteFrage"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>

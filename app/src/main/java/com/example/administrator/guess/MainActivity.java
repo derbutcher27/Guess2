@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private String dbAntwort;
     private Integer xp = 0;
     private TextView tvHighscore, tvFrage, tvLive, tvAntwortDB, tvLebenNegativ, etAntwortUser, tvBonusPositiv, tvXP;
-    private Button btnNaechsteFrage, btnNeuesSpiel, btnLoesen;
+    private Button btnNaechsteFrage, btnNeuesSpiel, btnLoesen, btnHighscore;
     private ProgressBar pblife;
     Integer newIntLife, oldIntLife = 100;
 
@@ -68,9 +68,11 @@ public class MainActivity extends AppCompatActivity {
         tvBonusPositiv = (TextView) findViewById(R.id.tvBonusPositiv);
         tvLebenNegativ = (TextView) findViewById(R.id.tvLebenNegativ);
         tvXP = (TextView) findViewById(R.id.tvXP);
+        btnHighscore = (Button) findViewById(R.id.btnHighScore);
 
         btnNaechsteFrage.setVisibility(View.INVISIBLE);
         btnNeuesSpiel.setVisibility(View.INVISIBLE);
+        btnHighscore.setVisibility(View.INVISIBLE);
 
         //ermittelt die tabellen große von FragenUAntworten
         //erstellt eine zufaellige liste an hand der groeße er DB, die spaeter zur ermittlung der Fragen verwendet werden kann
@@ -143,6 +145,15 @@ public class MainActivity extends AppCompatActivity {
         } else {
 
             btnNeuesSpiel.setVisibility(View.VISIBLE);
+            btnHighscore.setVisibility(View.VISIBLE);
+
+            btnHighscore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(MainActivity.this, HighScore.class);
+                    startActivity(i);
+                }
+            });
 
             //startet ein neues spiel in dem die activity neugeladen wird
             btnNeuesSpiel.setOnClickListener(new View.OnClickListener() {
@@ -206,6 +217,7 @@ public class MainActivity extends AppCompatActivity {
             btnNaechsteFrage.setEnabled(false);
 
             btnNeuesSpiel.setVisibility(View.VISIBLE);
+            btnHighscore.setVisibility(View.VISIBLE);
 
             btnNeuesSpiel.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -216,34 +228,30 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-            //erzeugt ein popup und beschreibt diese fuer die spaetere anzeige
-            AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
-            alertBuilder.setCancelable(true);
-            alertBuilder.setMessage(getResources().getString(R.string.spiel_verloren));
+            btnHighscore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(MainActivity.this, HighScore.class);
+                    startActivity(i);
+                }
+            });
 
-            //zeigt die option ein neues spiel zu starten unter dem popup an
-            alertBuilder.setNegativeButton(
-                    getResources().getString(R.string.new_game),
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            Intent intent = getIntent();
-                            finish();
-                            startActivity(intent);
-                        }
-                    });
+            //Abzug berechnen
+            DecimalFormat df = new DecimalFormat("###0.00");
+            tvLebenNegativ.setTextColor(RED);
+            tvLebenNegativ.setText("-" + df.format(abzug) + "%");
 
-            //zeigt die option sich den highscore anzuzeigen lassen unter dem popup an
-            alertBuilder.setPositiveButton(
-                    getResources().getString(R.string.highscore),
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            Intent i = new Intent(MainActivity.this, HighScore.class);
-                            startActivity(i);
-                        }
-                    });
-            //baut den altertdialog fuer das popup
-            AlertDialog popupLost = alertBuilder.create();
+            //ProgressBar anpassen
+            newIntLife = Integer.valueOf(live.intValue());
 
+            ProgressBarAnimation anim = new ProgressBarAnimation(pblife, oldIntLife, newIntLife);
+            anim.setDuration(500);
+            pblife.startAnimation(anim);
+            oldIntLife = newIntLife;
+
+
+            btnLoesen.setVisibility(View.INVISIBLE);
+            tvFrage.setText(R.string.spiel_verloren);
 
             //add highscore to highscore file
 
@@ -253,9 +261,6 @@ public class MainActivity extends AppCompatActivity {
 
            btnNeuesSpiel.setEnabled(true);
 
-
-            //zeigt das popup an
-            popupLost.show();
         } else {
             //erhoeht den wert fuer die naechste reihe in der DB die zubeginn ausgelesen und geshuffelt wurde
             shuffelListIncrease++;
@@ -296,9 +301,9 @@ public class MainActivity extends AppCompatActivity {
 
             //Anzeigen von verlorenem Leben
             else {
-                DecimalFormat df = new DecimalFormat("####0.00");
+                DecimalFormat df = new DecimalFormat("###0.00");
                 tvLebenNegativ.setTextColor(RED);
-                tvLebenNegativ.setText("-" + df.format(abzug));
+                tvLebenNegativ.setText("-" + df.format(abzug) + "%");
             }
 
             //zeigt den neuen highscore an
