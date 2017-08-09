@@ -24,13 +24,13 @@ public class Start extends AppCompatActivity {
         //ueberpueft ob Fragen bereits in der DB vorhanden sind und fuegt sie wenn noetig hinzu
         if (db.getSize("FragenUAntworten") != 0) {
         } else {
-            db.addFrage(new FragenUAntworten("Wie viele Weihnachtsbäume werden in Deutschland pro Jahr verkauft?","30000000"));
-            db.addFrage(new FragenUAntworten("Im Jahr 2013 gab es in Deutschland ungefähr 15.000 Tankstellen. Wie viele Tankstellen gab es vor noch 50 Jahren um das Jahr 1970?","60000"));
-            db.addFrage(new FragenUAntworten("Wie viele Liter Bier werden in Deutschland pro Kopf jährlich getrunken?","100"));
-            db.addFrage(new FragenUAntworten("Wie viele Piratenüberfälle gab es 2012 weltweit?","300"));
-            db.addFrage(new FragenUAntworten("Wie viele Menschen in Deutschland nutzen ein Smartphone?","40000000"));
-            db.addFrage(new FragenUAntworten("Wie viele gesetzliche Krankenkassen gibt es in Deutschland?","1815"));
-            db.addFrage(new FragenUAntworten("Wie viele Kinder wurden 2014 nicht im Krankenhaus geboren?","11391"));
+            db.addFrage(new FragenUAntworten("Wie viele Weihnachtsbäume werden in Deutschland pro Jahr verkauft?", "30000000"));
+            db.addFrage(new FragenUAntworten("Im Jahr 2013 gab es in Deutschland ungefähr 15.000 Tankstellen. Wie viele Tankstellen gab es vor noch 50 Jahren um das Jahr 1970?", "60000"));
+            db.addFrage(new FragenUAntworten("Wie viele Liter Bier werden in Deutschland pro Kopf jährlich getrunken?", "100"));
+            db.addFrage(new FragenUAntworten("Wie viele Piratenüberfälle gab es 2012 weltweit?", "300"));
+            db.addFrage(new FragenUAntworten("Wie viele Menschen in Deutschland nutzen ein Smartphone?", "40000000"));
+            db.addFrage(new FragenUAntworten("Wie viele gesetzliche Krankenkassen gibt es in Deutschland?", "1815"));
+            db.addFrage(new FragenUAntworten("Wie viele Kinder wurden 2014 nicht im Krankenhaus geboren?", "11391"));
             db.addFrage(new FragenUAntworten("Durchschnittliche Entferung, in der Menschen in den USA zu Ihrer Mutter Wohnen (km)", "29"));
             db.addFrage(new FragenUAntworten("Wie viel Prozent der Tinder Nutzer sind in einer Beziehung?", "42"));
             db.addFrage(new FragenUAntworten("Betrag, den Facebook-Mitarbeiter bekommen können, wenn sie ihre Eizelle einfrieren lassen ($)", "20000"));
@@ -97,8 +97,15 @@ public class Start extends AppCompatActivity {
             db.addFrage(new FragenUAntworten("Wie viele Polizisten gibt es in Sachsen? ", "10772"));
             db.addFrage(new FragenUAntworten("Wie alt wurde das älteste Pferd Deutschlands ?", "52"));
             db.addFrage(new FragenUAntworten("Wie viel verdient Bill Gates pro Sekunde ? (€)", "76"));
-
-
+            db.addFrage(new FragenUAntworten("Wie viele Würfelzucker sind in einem Liter Cola?", "40"));
+            db.addFrage(new FragenUAntworten("Wie viele Seiten hatte der gedruckte IKEA-Katalog 2011?", "388"));
+            db.addFrage(new FragenUAntworten("Wie hoch ist der Anteil der Menschen, die sich bei den Mahlzeiten Frühstück, Mittagessen und Abendessen an feste Zeiten halten (%)?", "33"));
+            db.addFrage(new FragenUAntworten("Wie viele Mahlzeiten nimmt ein Deutscher bis zu seinem 50. Lebensjahr durchschnittlich zu sich?", "100000"));
+            db.addFrage(new FragenUAntworten("Wie viel Wasser steckt in Salatgurken (%)? ", "95"));
+            db.addFrage(new FragenUAntworten("Wie viele Muskeln sind am Schlucken beteiligt?", "20"));
+            db.addFrage(new FragenUAntworten("Wie viele Apfelsorten gibt es weltweit?", "20000"));
+            db.addFrage(new FragenUAntworten("Wie viele Lebensmittel werden in Haushalten weggeworfen (%)?", "20"));
+            db.addFrage(new FragenUAntworten("Wie viel Prozent der Verbraucher würden zu Hause Lebensmittel wegwerfen, weil das Mindesthaltbarkeitsdatum (MHD) abgelaufen ist (%)?", "33"));
 
 
         }
@@ -133,7 +140,6 @@ public class Start extends AppCompatActivity {
             }
         });
     }
-
 
 
 }
