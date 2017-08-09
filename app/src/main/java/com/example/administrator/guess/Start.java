@@ -97,6 +97,9 @@ public class Start extends AppCompatActivity {
             db.addFrage(new FragenUAntworten("Wie viele Polizisten gibt es in Sachsen? ", "10772"));
             db.addFrage(new FragenUAntworten("Wie alt wurde das älteste Pferd Deutschlands ?", "52"));
             db.addFrage(new FragenUAntworten("Wie viel verdient Bill Gates pro Sekunde ? (€)", "76"));
+            db.addFrage(new FragenUAntworten("Wie viel Liter Bier trinkt jeder Deutsche pro Jahr", "107"));
+            db.addFrage(new FragenUAntworten("Wie schwer ist ein Blauwal ? (t)", "190"));
+            db.addFrage(new FragenUAntworten("Wie viele Mitarbeiter hat VW (2016)", "626715"));
 
 
 
