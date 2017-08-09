@@ -213,6 +213,8 @@ public class MainActivity extends AppCompatActivity {
         double abzug = Math.abs(100d - ((prozentwert / grundwert) * 100d));
         live = round(100 * (live - abzug)) / 100.0;
 
+
+
         if (live <= 0) {
             btnNaechsteFrage.setEnabled(false);
 
@@ -237,6 +239,10 @@ public class MainActivity extends AppCompatActivity {
             });
 
             //Abzug berechnen
+
+            if (abzug >= 100) {
+                abzug = 100;
+            }
             DecimalFormat df = new DecimalFormat("###0.00");
             tvLebenNegativ.setTextColor(RED);
             tvLebenNegativ.setText("-" + df.format(abzug) + "%");
@@ -259,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
 
             db.addHighscore(new HighscoreWorker(date.toString(), highscore));
 
-           btnNeuesSpiel.setEnabled(true);
+            btnNeuesSpiel.setEnabled(true);
 
         } else {
             //erhoeht den wert fuer die naechste reihe in der DB die zubeginn ausgelesen und geshuffelt wurde
