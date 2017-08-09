@@ -99,9 +99,31 @@ public class Start extends AppCompatActivity {
             db.addFrage(new FragenUAntworten("Wie viel verdient Bill Gates pro Sekunde ? (€)", "76"));
             db.addFrage(new FragenUAntworten("Wie viel Liter Bier trinkt jeder Deutsche pro Jahr", "107"));
             db.addFrage(new FragenUAntworten("Wie schwer ist ein Blauwal ? (t)", "190"));
-            db.addFrage(new FragenUAntworten("Wie viele Mitarbeiter hat VW (2016)", "626715"));
-
-
+            db.addFrage(new FragenUAntworten("Wie viele Mitarbeiter hat VW (2016) ?", "626715"));
+            db.addFrage(new FragenUAntworten("Wie viele Kalorien hat ein Apfel?", "52"));
+            db.addFrage(new FragenUAntworten("Wie groß ist Michael Jordan (cm)?", "198"));
+            db.addFrage(new FragenUAntworten("Wie viele Haustiere gibt es in Deutschland? (Mio)", "30"));
+            db.addFrage(new FragenUAntworten("In welcher Höhe befindet sich die internationale Raumstation ISS (km)?", "400"));
+            db.addFrage(new FragenUAntworten("Wie schnell dreht sich die Erde am Äquator ? (km/h)", "1650"));
+            db.addFrage(new FragenUAntworten("Wie schnell dreht sich die Erde um die Sonne ? (km/h)", "107000"));
+            db.addFrage(new FragenUAntworten("Wie viele Würfelzucker sind in einem Liter Cola?", "40"));
+            db.addFrage(new FragenUAntworten("Wie viele Seiten hatte der gedruckte IKEA-Katalog 2011?", "388"));
+            db.addFrage(new FragenUAntworten("Wie hoch ist der Anteil der Menschen, die sich bei den Mahlzeiten Frühstück, Mittagessen und Abendessen an feste Zeiten halten (%)?", "33"));
+            db.addFrage(new FragenUAntworten("Wie viele Mahlzeiten nimmt ein Deutscher bis zu seinem 50. Lebensjahr durchschnittlich zu sich?", "100000"));
+            db.addFrage(new FragenUAntworten("Wie viel Wasser steckt in Salatgurken (%)? ", "95"));
+            db.addFrage(new FragenUAntworten("Wie viele Muskeln sind am Schlucken beteiligt?", "20"));
+            db.addFrage(new FragenUAntworten("Wie viele Apfelsorten gibt es weltweit?", "20000"));
+            db.addFrage(new FragenUAntworten("Wie viele Lebensmittel werden in Haushalten weggeworfen (%)?", "20"));
+            db.addFrage(new FragenUAntworten("Wie viel Prozent der Verbraucher würden zu Hause Lebensmittel wegwerfen, weil das Mindesthaltbarkeitsdatum (MHD) abgelaufen ist (%)?", "33"));
+            db.addFrage(new FragenUAntworten("Wie viele Suren hat der Koran?", "114"));
+            db.addFrage(new FragenUAntworten("Wie viel Niederschlag gibt es in der Sahara pro Jahr? (mm)", "250"));
+            db.addFrage(new FragenUAntworten("Wie schwer war Manuel Uribe Garza (der schwerste Mensch der Welt)? (kg)", "592"));
+            db.addFrage(new FragenUAntworten("Wieviel Liter Wasser kann ein Kamel in 15 Minuten trinken?","200"));
+            db.addFrage(new FragenUAntworten("Wieviele Kilogramm Haut schuppen sich im Laufe eines Lebens vom Körper ab (kg)?","20"));
+            db.addFrage(new FragenUAntworten("Wann wurde das Mobiltelefon zum Patent angemeldet?","1942"));
+            db.addFrage(new FragenUAntworten("Um wieviele Zentimeter schrumpft der Eifelturm bei Kälte (cm)?","15"));
+            db.addFrage(new FragenUAntworten("Wie lang dauerte der 100-jährige Krieg?","116"));
+            db.addFrage(new FragenUAntworten("Wie viele Strophen hat die griechische Nationalhymne? ?","158"));
 
 
         }
