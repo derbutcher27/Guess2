@@ -42,34 +42,34 @@ public class HighScore extends AppCompatActivity {
                 tv1Score.setText(db.getAllHighscores().get(0).getScore() + " - " + " " + db.getAllHighscores().get(0).getDate());
                 break;
             case 2:
-                tv1Score.setText(db.getAllHighscores().get(0).getScore() + " - " + " " + db.getAllHighscores().get(0).getDate());
-                tv2Score.setText(db.getAllHighscores().get(1).getScore() + " - " + " " + db.getAllHighscores().get(1).getDate());
+                tv1Score.setText(db.getAllHighscores().get(0).getScore() + "  - " + " " + db.getAllHighscores().get(0).getDate());
+                tv2Score.setText(db.getAllHighscores().get(1).getScore() + "  - " + " " + db.getAllHighscores().get(1).getDate());
                 break;
             case 3:
-                tv1Score.setText(db.getAllHighscores().get(0).getScore() + " - " + " " + db.getAllHighscores().get(0).getDate());
-                tv2Score.setText(db.getAllHighscores().get(1).getScore() + " - " + " " + db.getAllHighscores().get(1).getDate());
-                tv3Score.setText(db.getAllHighscores().get(2).getScore() + " - " + " " + db.getAllHighscores().get(2).getDate());
+                tv1Score.setText(db.getAllHighscores().get(0).getScore() + "  - " + " " + db.getAllHighscores().get(0).getDate());
+                tv2Score.setText(db.getAllHighscores().get(1).getScore() + "  - " + " " + db.getAllHighscores().get(1).getDate());
+                tv3Score.setText(db.getAllHighscores().get(2).getScore() + "  - " + " " + db.getAllHighscores().get(2).getDate());
                 break;
             case 4:
-                tv1Score.setText(db.getAllHighscores().get(0).getScore() + " - " + " " + db.getAllHighscores().get(0).getDate());
-                tv2Score.setText(db.getAllHighscores().get(1).getScore() + " - " + " " + db.getAllHighscores().get(1).getDate());
-                tv3Score.setText(db.getAllHighscores().get(2).getScore() + " - " + " " + db.getAllHighscores().get(2).getDate());
-                tv4Score.setText(db.getAllHighscores().get(3).getScore() + " - " + " " + db.getAllHighscores().get(3).getDate());
+                tv1Score.setText(db.getAllHighscores().get(0).getScore() + "  - " + " " + db.getAllHighscores().get(0).getDate());
+                tv2Score.setText(db.getAllHighscores().get(1).getScore() + "  - " + " " + db.getAllHighscores().get(1).getDate());
+                tv3Score.setText(db.getAllHighscores().get(2).getScore() + "  - " + " " + db.getAllHighscores().get(2).getDate());
+                tv4Score.setText(db.getAllHighscores().get(3).getScore() + "  - " + " " + db.getAllHighscores().get(3).getDate());
                 break;
             case 5:
-                tv1Score.setText(db.getAllHighscores().get(0).getScore() + " - " + " " + db.getAllHighscores().get(0).getDate());
-                tv2Score.setText(db.getAllHighscores().get(1).getScore() + " - " + " " + db.getAllHighscores().get(1).getDate());
-                tv3Score.setText(db.getAllHighscores().get(2).getScore() + " - " + " " + db.getAllHighscores().get(2).getDate());
-                tv4Score.setText(db.getAllHighscores().get(3).getScore() + " - " + " " + db.getAllHighscores().get(3).getDate());
-                tv5Score.setText(db.getAllHighscores().get(4).getScore() + " - " + " " + db.getAllHighscores().get(4).getDate());
+                tv1Score.setText(db.getAllHighscores().get(0).getScore() + "  - " + " " + db.getAllHighscores().get(0).getDate());
+                tv2Score.setText(db.getAllHighscores().get(1).getScore() + "  - " + " " + db.getAllHighscores().get(1).getDate());
+                tv3Score.setText(db.getAllHighscores().get(2).getScore() + "  - " + " " + db.getAllHighscores().get(2).getDate());
+                tv4Score.setText(db.getAllHighscores().get(3).getScore() + "  - " + " " + db.getAllHighscores().get(3).getDate());
+                tv5Score.setText(db.getAllHighscores().get(4).getScore() + "  - " + " " + db.getAllHighscores().get(4).getDate());
                 break;
             case 6:
-                tv1Score.setText(db.getAllHighscores().get(0).getScore() + " - " + " " + db.getAllHighscores().get(0).getDate());
-                tv2Score.setText(db.getAllHighscores().get(1).getScore() + " - " + " " + db.getAllHighscores().get(1).getDate());
-                tv3Score.setText(db.getAllHighscores().get(2).getScore() + " - " + " " + db.getAllHighscores().get(2).getDate());
-                tv4Score.setText(db.getAllHighscores().get(3).getScore() + " - " + " " + db.getAllHighscores().get(3).getDate());
-                tv5Score.setText(db.getAllHighscores().get(4).getScore() + " - " + " " + db.getAllHighscores().get(4).getDate());
-                tv6Score.setText(db.getAllHighscores().get(5).getScore() + " - " + " " + db.getAllHighscores().get(5).getDate());
+                tv1Score.setText(db.getAllHighscores().get(0).getScore() + "  - " + " " + db.getAllHighscores().get(0).getDate());
+                tv2Score.setText(db.getAllHighscores().get(1).getScore() + "  - " + " " + db.getAllHighscores().get(1).getDate());
+                tv3Score.setText(db.getAllHighscores().get(2).getScore() + "  - " + " " + db.getAllHighscores().get(2).getDate());
+                tv4Score.setText(db.getAllHighscores().get(3).getScore() + "  - " + " " + db.getAllHighscores().get(3).getDate());
+                tv5Score.setText(db.getAllHighscores().get(4).getScore() + "  - " + " " + db.getAllHighscores().get(4).getDate());
+                tv6Score.setText(db.getAllHighscores().get(5).getScore() + "  - " + " " + db.getAllHighscores().get(5).getDate());
                 break;
             case 7:
                 tv1Score.setText(db.getAllHighscores().get(0).getScore() + " " + " " + db.getAllHighscores().get(0).getDate());
