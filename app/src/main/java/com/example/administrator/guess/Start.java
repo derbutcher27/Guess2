@@ -26,10 +26,9 @@ public class Start extends AppCompatActivity {
         } else {
             db.addFrage(new FragenUAntworten("Wie viele Weihnachtsbäume werden in Deutschland pro Jahr verkauft?","30000000"));
             db.addFrage(new FragenUAntworten("Im Jahr 2013 gab es in Deutschland ungefähr 15.000 Tankstellen. Wie viele Tankstellen gab es vor noch 50 Jahren um das Jahr 1970?","60000"));
-            db.addFrage(new FragenUAntworten("Wie viele Liter Bier werden in Deutschland pro Kopf jährlich getrunken?","100"));
             db.addFrage(new FragenUAntworten("Wie viele Piratenüberfälle gab es 2012 weltweit?","300"));
             db.addFrage(new FragenUAntworten("Wie viele Menschen in Deutschland nutzen ein Smartphone?","40000000"));
-            db.addFrage(new FragenUAntworten("Wie viele gesetzliche Krankenkassen gibt es in Deutschland?","1815"));
+            db.addFrage(new FragenUAntworten("Wie viele Krankenkassen gibt es in Deutschland?","113"));
             db.addFrage(new FragenUAntworten("Wie viele Kinder wurden 2014 nicht im Krankenhaus geboren?","11391"));
             db.addFrage(new FragenUAntworten("Durchschnittliche Entferung, in der Menschen in den USA zu Ihrer Mutter Wohnen (km)", "29"));
             db.addFrage(new FragenUAntworten("Wie viel Prozent der Tinder Nutzer sind in einer Beziehung?", "42"));
@@ -124,6 +123,7 @@ public class Start extends AppCompatActivity {
             db.addFrage(new FragenUAntworten("Um wieviele Zentimeter schrumpft der Eifelturm bei Kälte (cm)?","15"));
             db.addFrage(new FragenUAntworten("Wie lang dauerte der 100-jährige Krieg?","116"));
             db.addFrage(new FragenUAntworten("Wie viele Strophen hat die griechische Nationalhymne? ?","158"));
+            db.addFrage(new FragenUAntworten("Wie viele Hamster werden benötigt, um ein Haus mit Strom zu versorgen ? :-)","2400"));
 
 
         }
