@@ -29,7 +29,7 @@ public class Start extends AppCompatActivity {
             db.addFrage(new FragenUAntworten("Wie viele Liter Bier werden in Deutschland pro Kopf jährlich getrunken?","100"));
             db.addFrage(new FragenUAntworten("Wie viele Piratenüberfälle gab es 2012 weltweit?","300"));
             db.addFrage(new FragenUAntworten("Wie viele Menschen in Deutschland nutzen ein Smartphone?","40000000"));
-            db.addFrage(new FragenUAntworten("Wie viele gesetzliche Krankenkassen gibt es in Deutschland?","1815"));
+            db.addFrage(new FragenUAntworten("Wie viele Krankenkassen gibt es in Deutschland?","113"));
             db.addFrage(new FragenUAntworten("Wie viele Kinder wurden 2014 nicht im Krankenhaus geboren?","11391"));
             db.addFrage(new FragenUAntworten("Durchschnittliche Entferung, in der Menschen in den USA zu Ihrer Mutter Wohnen (km)", "29"));
             db.addFrage(new FragenUAntworten("Wie viel Prozent der Tinder Nutzer sind in einer Beziehung?", "42"));
