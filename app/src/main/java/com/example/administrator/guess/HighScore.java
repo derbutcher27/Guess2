@@ -39,7 +39,7 @@ public class HighScore extends AppCompatActivity {
 
         switch (db.getSize("Highscore")) {
             case 1:
-                tv1Score.setText(db.getAllHighscores().get(0).getScore() + " - " + " " + db.getAllHighscores().get(0).getDate());
+                tv1Score.setText(db.getAllHighscores().get(0).getScore() + "  - " + " " + db.getAllHighscores().get(0).getDate());
                 break;
             case 2:
                 tv1Score.setText(db.getAllHighscores().get(0).getScore() + "  - " + " " + db.getAllHighscores().get(0).getDate());
