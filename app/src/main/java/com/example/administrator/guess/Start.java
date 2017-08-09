@@ -89,10 +89,13 @@ public class Start extends AppCompatActivity {
             db.addFrage(new FragenUAntworten("Wie lang ist ein Marathon (m) ?", "42195"));
             db.addFrage(new FragenUAntworten("Wie hoch war das durchschnittliche Bruttoentgelt in Deutschland 2015", "34999"));
             db.addFrage(new FragenUAntworten("Wie viele Kennzeichenkürzel gab es 2013 in Deutschland", "777"));
-
             db.addFrage(new FragenUAntworten("Wie viel Geld geben Männer durchschnittlich im Monat für Kleidung aus? (€)", "23"));
             db.addFrage(new FragenUAntworten("Wie viel Geld geben Frauen durchschnittlich im Monat für Kleidung aus? (€)", "44"));
             db.addFrage(new FragenUAntworten("Wie viel Geld geben Deutsche durchschnittlich für einen Neuwagen aus (€)", "31400"));
+            db.addFrage(new FragenUAntworten("Der niedrigste Gewinn bei 6 richtigen im Lotto? (€)", "8644"));
+            db.addFrage(new FragenUAntworten("Wie viele Menschen lebten jemals auf der Erde ? (Mrd.)", "108"));
+            db.addFrage(new FragenUAntworten("Wie viele Polizisten gibt es in Sachsen? ", "10772"));
+            db.addFrage(new FragenUAntworten("Wie alt wurde das älteste Pferd Deutschlands ?", "52"));
         }
 
         setContentView(R.layout.activity_start);
